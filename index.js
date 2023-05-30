@@ -5,8 +5,6 @@ function laCajaDePandora(numero){
 const binario= 0
 }
 
-
-
 const marco= () => {
     return {
         nombre: "Marco",
