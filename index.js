@@ -1,4 +1,8 @@
-function laCajaDePandora(numero){
-// proximamente escribiremos codigo aqui
-// sdfdsfdsjf
+function miguel(numero){
+// testing developer
+return {
+    name: 'Miguel Martinez',
+    age: 27,
+    origin: 'Colombia'
+}
 }
