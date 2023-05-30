@@ -1,6 +1,5 @@
 function miguel(numero){
-// proximamente escribiremos codigo aqui
-// sdfdsfdsjf
+// testing developer
 return {
     name: 'Miguel Martinez',
     age: 27,
