@@ -1,0 +1,160 @@
+body {
+  
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-image: url("../../assets/fondo.jpg"); */
+  background-color: #282b31;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: #1e1c20;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  gap: 5rem;
+  margin-bottom: 10%;
+  margin-top: 20px;
+  animation: fadeinupbig 1s forwards ease;
+  min-height: 100vh;
+  
+}
+
+
+
+@keyframes fadeinupbig {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  } 
+}
+
+
+/* .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 4%;
+    margin-top: 20px;
+  } */
+
+  
+.link {
+  text-decoration: none;
+}
+
+.title {
+  cursor: pointer;
+  color: #4e1137;
+  margin-left: 1%;
+  animation-name: aparecer;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+  
+}
+
+
+.title:hover{animation: aparecer 2s infinite step-end}
+.title:active{animation: acercar 3s ease;}
+
+@keyframes acercar {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(5);
+  }
+}
+
+@keyframes aparecer {
+    0% { transform: rotate(0deg); }
+    5% { transform: rotate(3deg); }
+    10% { transform: rotate(0deg); }
+    20% { transform: rotate(3deg); }
+    25% { transform: rotate(0deg); }
+    30% { transform: rotate(3deg); }
+    35% { transform: rotate(0deg); }
+    40% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
+}
+
+
+@keyframes animacion {
+  0% {
+    color: rgb(255, 115, 0);
+  }
+  50% {
+    color: rgb(255, 217, 0);
+  }
+  100% {
+    color: rgb(255, 255, 255);
+  }
+}
+
+.button {
+  height: 45px;
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #6d2652;
+  background-color: #1d1f24;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  animation: aparecer 2s ease-in 1;
+  animation-delay: 3s;
+
+}
+
+.button:hover {
+  background-color: #f0c305;
+  box-shadow: 0px 15px 20px rgb(231, 196, 37);
+  color: #000;
+  transform: translateY(-7px);
+  animation: aparecer 50s 200 linear
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+.loadingPokemons {
+  width: 25%;
+  height: 25%;
+  margin: 40%
+}
+
+/* @media screen and (max-width: 600px){
+    .nav.responsive {
+position:relative
+
+    }
+    (float: right;
+    display: block;)
+} */
