@@ -2,7 +2,7 @@ import { GET_ALL_PRODUCTS } from "../actions/actions";
 
 const initialState = {
   products: [],
-  allProducts,
+  allProducts: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -18,3 +18,5 @@ const rootReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default rootReducer;
