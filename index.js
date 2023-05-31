@@ -23,4 +23,12 @@ return {
     origin: 'Colombia'
 }
 
+function oscarMau(numero){
+    // testing developer
+    return {
+        name: 'Mauricio Rangel',
+        age: 25,
+        origin: 'Mexico'
+    }
+
 }
