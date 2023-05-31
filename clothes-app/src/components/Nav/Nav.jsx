@@ -1,4 +1,6 @@
-import SearchBar from "../components/SearchBar/SearchBar";                                         
+import SearchBar from "../components/SearchBar/SearchBar";
+import Login from "../Login/Login";
+import SignUp from "../SignUp/SignUp";
 
 export default function Nav() {
   return (
@@ -6,20 +8,10 @@ export default function Nav() {
       <Link className={styles.link} to="/">
         <h1 className={styles.title}>ClotheStore</h1>
       </Link>
+      <Login />
+      <SignUp />
 
-      <select>
-        <option value="none">Categories</option>
-        <option value="men">Men</option>
-        <option value="women">Women</option>
-      </select>
-
-      <select>
-        <option value="none">Price</option>
-        <option value="lower">Lower</option>
-        <option value="higher">Higher</option>
-      </select>
-
-      <SearchBar/>
+      <SearchBar />
     </div>
   );
 }
