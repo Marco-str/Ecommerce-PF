@@ -30,5 +30,6 @@ function oscarMau(numero){
         age: 25,
         origin: 'Mexico'
     }
+}
 
 }
