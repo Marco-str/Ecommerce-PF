@@ -1,9 +1,9 @@
-const Card = () => {
+const Card = (name) => {
   return (
-    <div className="card">
+    <div>
       <p>{name}</p>
-      <img src={image} alt="" className="img" />
-      <p className="diets">{primeraLetraMayusculaYComa(diets)}</p>
     </div>
   );
 };
+
+export default Card
