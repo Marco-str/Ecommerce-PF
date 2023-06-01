@@ -4,11 +4,14 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
 
     sequelize.define(
+
         "Clothes",
+
         {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
+
             },
             size: {
                 type: DataTypes.ARRAY (DataTypes.JSON),

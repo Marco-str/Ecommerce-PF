@@ -31,6 +31,7 @@ User.belongsToMany(Clothes, { through: "Order"})
 Clothes.belongsToMany(User, { through: "Order"})
 
 
+
 module.exports = {
     sequelize,
     ...sequelize.models

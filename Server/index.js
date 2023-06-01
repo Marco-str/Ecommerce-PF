@@ -1,12 +1,15 @@
 const server = require("./src/app");
+
 const {sequelize} = require("./src/db.js");
 require('dotenv').config();
 require("./src/db.js");
 const saveDBapiData = require("./src/controllers/saveDBapiData");
 
+
 sequelize.sync({ force: true })
 .then(() => {
 server.listen(process.env.PORT, () => {
+
     
   saveDBapiData();
  
@@ -14,4 +17,5 @@ server.listen(process.env.PORT, () => {
     
     console.log(`Servidor en el puerto  http://localhost:${process.env.PORT}`);
   });
+
 });
