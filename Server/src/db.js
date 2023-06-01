@@ -23,11 +23,12 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
 UserModel(sequelize);
 ClothesModel(sequelize);
 
+
 const { User, Clothes } = sequelize.models;
 
 
-User.belongsToMany(Clothes, { through: "Cart"})
-Clothes.belongsToMany(User, { through: "Cart"})
+User.belongsToMany(Clothes, { through: "Order"})
+Clothes.belongsToMany(User, { through: "Order"})
 
 
 module.exports = {
