@@ -1,26 +1,37 @@
-const axios = require("axios");
-const getProducts = require("../controllers/getProducts");
 
-const saveDBapiData = async function () {
+const getProducts = require("./getProducts");
+const { Clothes } = require("../db.js");
 
-const dataProducts = await getProducts();
-    const response = dataProducts.data;
+const getApiData = async () => {
+  const dataProducts = await getProducts();
+  const response = dataProducts.data;
 
-const products = response.map((product) => {
-    return {
-        id : product.ItemCode,
-        PrimaryParentCategory: product.PrimaryParentCategory,
-        categoryName: product.categoryName,
-        defaultProductImage: product.defaultProductImage,
-        variantPrductImage: product.variantPrductImage,
-        listPrice: product.listPrice,
-        
+  const validProducts = [];
 
+  const products = response.map((product) => ({
+    id: product.ItemCode,
+    sizes: product.Variants[0].Sizes.map((size) => size.SizeName),
+    color: product.Variants[0].ColorName,
+    listPrice: product.ListPrice,
+    defaultProductImage: product.DefaultProductImage,
+    variantProductImage: product.Variants[0].ProductImages[0],
+    categoryName: product.categoryName,
+    PrimaryParentCategory: product.PrimaryParentCategory,
+  }));
 
-    }
+  validProducts.push(...products);
 
-})
-}
+  return validProducts;
+};
 
+const saveDBapiData = async () => {
+  try {
+    const allData = await getApiData();
+    await Clothes.bulkCreate(allData);
+    return allData;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
 
 module.exports = saveDBapiData;
