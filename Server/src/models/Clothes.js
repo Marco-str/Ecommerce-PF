@@ -4,30 +4,40 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
 
     sequelize.define(
-        Clothes,
+
+        "Clothes",
+
         {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
-                autoIncrement: true,
+
             },
             size: {
+                type: DataTypes.ARRAY (DataTypes.JSON),
+                allowNull: false,
+            },
+            color: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            price: {
-                type: DataTypes.NUMBER,
+            listPrice: {
+                type: DataTypes.FLOAT,
                 allowNull: false,
             },
-            image: {
+            defaultProductImage: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            stock: {
-                type: DataTypes.NUMBER,
+            variantPrductImage: {
+                type: DataTypes.STRING,
                 allowNull: false,
             },
-            category: {
+            categoryName: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            primaryParentCategory: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
