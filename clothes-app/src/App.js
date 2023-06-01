@@ -8,6 +8,7 @@ import Detail from './components/Detail/Detail';
 import DashboardAdmin from './components/DashboardAdmin/DashboardAdmin';
 import SignUp from './components/Sign/SignUp';
 import Carrito from './components/Carrito/Carrito';
+import Pay from './components/Pay/Pay';
 
 function App() {
   return (
@@ -18,9 +19,12 @@ function App() {
       <Route path='/detail/:id' element={<Detail/>}/>
       <Route path='/carrito' element={<Carrito/>}/>
       <Route path='/login' element={<Login/>}/>
-      <Route path='/SignUp' element={<SignUp/>}/>
-      <Route path='/Publicate' element={<Publicate/>}/>
+      <Route path='/signup' element={<SignUp/>}/>
+      <Route path='/publicate' element={<Publicate/>}/>
       <Route path='/dashboard' element={<DashboardAdmin/>}/>
+      <Route path='/pay' element={<Pay/>}/>
+
+
     </Routes>
 
     </div>
