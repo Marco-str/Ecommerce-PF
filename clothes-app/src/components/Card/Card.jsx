@@ -11,5 +11,5 @@ const Card = ({ name, image }) => {
     </div>
   );
 };
-
+//marco puto
 export default Card;
