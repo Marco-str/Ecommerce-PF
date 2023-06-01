@@ -1,10 +1,10 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
-const routes = require("./routes/index");
-const bodyParser = require("body-parser");
 const cors = require("cors");
-require("dotenv").config();
+const routes = require("./routes/index");
+const bodyParser = require('body-parser');
+
 
 const server = express();
 
@@ -15,7 +15,11 @@ server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
 server.use((req, res, next) => {
   //middleware para dejar pasar las solicitudes de cualquiera
-  res.header("Access-Control-Allow-Origin", `http://localhost:3000`);
+  res.header(
+    "Access-Control-Allow-Origin",
+    `http://localhost:3000`
+  );
+
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
@@ -24,6 +28,9 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
-server.use("/", routes); //por aqui pasan todas las endpoint
+console.log("sali del ultimo middleware")
+
+
+server.use(routes); //por aqui pasan todas las endpoint
 
 module.exports = server;
