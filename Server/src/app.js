@@ -7,17 +7,19 @@ const bodyParser = require('body-parser');
 
 
 const server = express();
+
 server.use(cors());
 server.use(morgan("dev"));
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" })); //REQ = PUT, POST parse URL req.params y lo convierte en un JSON en el body
 server.use(bodyParser.json({ limit: "50mb" }));
-server.use(cookieParser()); 
+server.use(cookieParser());
 server.use((req, res, next) => {
   //middleware para dejar pasar las solicitudes de cualquiera
   res.header(
     "Access-Control-Allow-Origin",
     `http://localhost:3000`
   );
+
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
