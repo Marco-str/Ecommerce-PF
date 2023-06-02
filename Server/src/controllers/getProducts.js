@@ -1,4 +1,6 @@
 const axios = require("axios");
+require("dotenv").config();
+const { API_KEY } = process.env;
 
 const getProducts = async function () {
   const options = {
@@ -13,4 +15,4 @@ const getProducts = async function () {
     return response;
 };
 
-module.exports = getProducts;
+module.exports = getProducts; 
