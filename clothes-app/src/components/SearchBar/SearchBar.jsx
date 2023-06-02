@@ -19,11 +19,9 @@ export default function SearchBar() {
     if (name.trim()) {
       // verifica si el valor del campo de entrada no está vacío
       console.log(name);
-<<<<<<< HEAD
-      dispatch(getAllProducts(name));
-=======
+
       dispatch(getProductByName(name));
->>>>>>> developer
+      
       setName(""); // limpia el valor del campo de entrada después de enviar la acción
     } else {
       alert("Enter a valid name");
