@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getAllProducts } from "../../redux/actions/actions";
+import { getNamePokemon } from "../../redux/action/index";
 import styles from "./SearchBar.module.css";
 
 export default function SearchBar() {
@@ -17,7 +17,7 @@ export default function SearchBar() {
     if (name.trim()) {
       // verifica si el valor del campo de entrada no está vacío
       console.log(name);
-      dispatch(getAllProducts(name));
+      dispatch(getNamePokemon(name));
       setName(""); // limpia el valor del campo de entrada después de enviar la acción
     } else {
       alert("Enter a valid name");
