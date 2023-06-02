@@ -1,6 +1,4 @@
-import { GET_ALL_PRODUCTS } from "../actions/actions";
-import { FILTER_BY_GENDER } from "../actions/actions";
-import { FILTER_BY_PRICE } from "../actions/actions";
+import { GET_ALL_PRODUCTS, FILTER_BY_GENDER, FILTER_BY_PRICE } from "../actions/actions";
 
 const initialState = {
   products: [],
@@ -31,20 +29,19 @@ const rootReducer = (state = initialState, action) => {
           products: filteredProducts,
         };
       }
-
-      case FILTER_BY_PRICE:
-        const { payload: priceRange } = action;
-        const [minPrice, maxPrice] = priceRange;
-        const filteredByPriceProducts = state.allProducts.filter(
-          (product) => product.price >= minPrice && product.price <= maxPrice
-        );
-        return {
-          ...state,
-          products: filteredByPriceProducts,
-        };
-      default:
-        return state;
-    }
-  };
+    case FILTER_BY_PRICE:
+      const { payload: priceRange } = action;
+      const [minPrice, maxPrice] = priceRange;
+      const filteredByPriceProducts = state.allProducts.filter(
+        (product) => product.price >= minPrice && product.price <= maxPrice
+      );
+      return {
+        ...state,
+        products: filteredByPriceProducts,
+      };
+    default:
+      return state;
+  }
+};
 
 export default rootReducer;
