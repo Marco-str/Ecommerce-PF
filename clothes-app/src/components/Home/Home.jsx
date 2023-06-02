@@ -1,29 +1,19 @@
 import { useDispatch } from "react-redux";
-import { useEffect , useCallback} from "react";
+import { useEffect } from "react";
 import { getAllProducts } from "../../redux/actions/actions";
 import CardsContainer from "../CardsContainer/CardsContainer";
-import style from "./Home.module.css";
-import SearchBar from "../SearchBar/SearchBar";
+import style from "./Home.module.css"
 
 const Home = () => {
   const dispatch = useDispatch();
-  const dispatchGetAllProducts = useCallback(() => {
+
+  useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
-  
-  useEffect(() => {
-    dispatchGetAllProducts();
-  }, [dispatchGetAllProducts]);
-  
-
 
   return (
-    <div>
-      <SearchBar/>
     <div className={style.container}>
-
       <CardsContainer />
-      </div>
     </div>
   );
 };
