@@ -1,29 +1,18 @@
 
-
-
 import axios from "axios";
-export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
-export const GET_CATEGORIES = "GET_CATEGORIES";
-export const ORDER_PRODUCTS ='ORDER_PRODUCTS';
-export const GET_BY_NAME='GET_BY_NAME';
-export const GET_DETAIL='GET_DETAIL'
-export const SET_PAGE='SET_PAGE';
-export const CLEAN_STORE='CLEAN_STORE';
-export const FILTER_BY_CATEGORY='FILTER_BY_CATEGORY';
-export const FILTER_BY_PRICE='FILTER_BY_PRICE';
 
 
 export const getAllProducts = () => {
   return async function (dispatch) {
     const products = await axios.get("http://localhost:3001/products");
-    dispatch({ type: GET_ALL_PRODUCTS, payload: products.data });
+    dispatch({ type: 'GET_ALL_PRODUCTS', payload: products.data });
   };
 };
 
 export const getAllProductByName = () => {
   return async function (dispatch) {
     const products = await axios.get("http://localhost:3001/products");
-    dispatch({ type: GET_BY_NAME, payload: products.data });
+    dispatch({ type: 'GET_BY_NAME', payload: products.data });
   };
 };
 
@@ -31,7 +20,7 @@ export function getCategories(){
   return async function(dispatch){
       let response = await axios.get(`/types`);
       return dispatch({
-          type: GET_CATEGORIES,
+          type: 'GET_CATEGORIES',
           payload: response.data
       });
   };
@@ -39,7 +28,7 @@ export function getCategories(){
 
 export function orderByName(payload){
   return{
-      type: ORDER_PRODUCTS,
+      type: 'ORDER_PRODUCTS',
       payload
   };
 };
@@ -49,7 +38,7 @@ export function getDetail(id){
       try{
           let json = await axios.get('/pokemons/' + id);
           return dispatch({
-              type: GET_DETAIL,
+              type: 'GET_DETAIL',
               payload: json.data
           });
       }catch{
@@ -61,14 +50,14 @@ export function getDetail(id){
 
 export function filterByCategory(payload){
   return{
-      type: FILTER_BY_CATEGORY,
+      type: 'FILTER_BY_CATEGORY',
       payload
   };
 };
 
 export function filterByPrice(payload){
   return{
-      type: FILTER_BY_PRICE,
+      type: 'FILTER_BY_PRICE',
       payload
   };
 };
@@ -91,13 +80,13 @@ export function createPubli(pokenuevo){
 
 export function cleanMyStore(){
   return{
-      type: CLEAN_STORE,
+      type: 'CLEAN_STORE',
   }
 }
 
 
 export function setPage(){
   return{
-      type: SET_PAGE,
+      type: 'SET_PAGE',
   }
 }
