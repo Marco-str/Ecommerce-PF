@@ -1,5 +1,12 @@
 .mainContainer {
-border: solid black 1px;
-margin: 20px;
+  border: solid black 1px;
+  margin: 20px;
+  margin: 20px;
+  width: 300px;
+  height: 300px;
 }
 
+.card {
+  width: 200px;
+  height: 200px;
+}
