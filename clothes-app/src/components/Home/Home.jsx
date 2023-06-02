@@ -2,7 +2,8 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllProducts } from "../../redux/actions/actions";
 import CardsContainer from "../CardsContainer/CardsContainer";
-import style from "./Home.module.css"
+import Filter from "../Filters/Filters";
+import style from "./Home.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -13,9 +14,11 @@ const Home = () => {
 
   return (
     <div className={style.container}>
+      <Filter />
       <CardsContainer />
     </div>
   );
 };
 
 export default Home;
+
