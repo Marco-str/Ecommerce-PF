@@ -11,7 +11,7 @@ sequelize.sync({ force: true })
 server.listen(process.env.PORT, () => {
 
     
-  saveDBapiData();
+  // saveDBapiData();
  
     console.log("Conectado a la base de datos");
     
