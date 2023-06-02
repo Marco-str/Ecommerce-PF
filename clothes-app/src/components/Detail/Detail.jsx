@@ -1,10 +1,23 @@
 import React from "react";
+// import { useParams } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
+// import { NavLink } from 'react-router-dom';
 
+// import { searchRecipeById } from '../../redux/actions/index.js';
 import { FaCartArrowDown, FaArrowLeft } from "react-icons/fa";
 
 import styles from './detail.module.css';
 
 export default function Detail() {
+    // const dispatch = useDispatch();
+    // const { detailId } = useParams();
+    // const state = useSelector(state => state.recipeDetail);
+
+    // useEffect(() => {
+    //     dispatch(searchRecipeById(detailId));
+    // }, [dispatch, detailId]);
+
+
     return (
         <div className={styles.mainContainer}>
         
