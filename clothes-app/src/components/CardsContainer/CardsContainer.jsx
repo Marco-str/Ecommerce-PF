@@ -9,7 +9,7 @@ const CardsContainer = () => {
 
   //Paginado
   const [currentPage, setCurrentPage] = useState(0);
-  const productsPerPage = 9;
+  const productsPerPage = 6;
   const filterProducts = products.slice(
     currentPage,
     currentPage + productsPerPage
@@ -18,11 +18,11 @@ const CardsContainer = () => {
 
   const nextPage = () => {
     document.documentElement.scrollTop = 100;
-    setCurrentPage(currentPage + 9);
+    setCurrentPage(currentPage + 6);
   };
   const prevPage = () => {
     document.documentElement.scrollTop = 100;
-    if (currentPage > 0) setCurrentPage(currentPage - 9);
+    if (currentPage > 0) setCurrentPage(currentPage - 6);
   };
 
   return (

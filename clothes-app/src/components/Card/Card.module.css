@@ -1,12 +1,25 @@
 .mainContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   border: solid black 1px;
-  margin: 20px;
-  margin: 20px;
+  height: 450px;
   width: 300px;
-  height: 300px;
+  margin: 10px;
 }
 
+.mainContainer:hover{
+  box-shadow: inset ;
+  transition: 0.3s;
+}
 .card {
-  width: 200px;
-  height: 200px;
+  width: 80%;
+}
+
+
+.title {
+  text-align: center;
+  max-height: 60%;
+  color: black;
+  text-decoration: underline;
 }
