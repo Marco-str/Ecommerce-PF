@@ -68,12 +68,12 @@ export function getDetail(id) {
 };
 
 
-export function filterByCategory(payload) {
+export function filterByCategory(category) {
   return {
     type: FILTER_BY_CATEGORY,
-    payload
+    payload: category,
   };
-};
+}
 
 export function filterByPrice(priceRange) {
   return {

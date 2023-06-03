@@ -1,4 +1,4 @@
-import { GET_ALL_PRODUCTS, FILTER_BY_GENDER, FILTER_BY_PRICE } from "../actions/actions";
+import { GET_ALL_PRODUCTS, FILTER_BY_GENDER, FILTER_BY_PRICE, FILTER_BY_CATEGORY } from "../actions/actions";
 
 const initialState = {
   products: [],
@@ -39,6 +39,22 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         products: filteredByPriceProducts,
       };
+    case FILTER_BY_CATEGORY:
+      const { payload: category } = action;
+      if (category === 'all') {
+        return {
+          ...state,
+          products: state.allProducts,
+        };
+      } else {
+        const filteredByCategoryProducts = state.allProducts.filter(
+          (product) => product.category === category
+        );
+        return {
+          ...state,
+          products: filteredByCategoryProducts,
+        };
+      }
     default:
       return state;
   }
