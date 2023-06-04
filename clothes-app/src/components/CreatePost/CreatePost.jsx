@@ -8,13 +8,14 @@ import styles from "./CreatePost.module.css";
 
 export default function CreatePost() {
   const dispatch = useDispatch();
-  const [, setTypes] = useState([]);
+  const products = useSelector((state) => state.products); 
+  const [categories, setCategories] = useState([]);
   const [error, setError] = useState({
     name: "",
     color: "",
     price: "",
     image: "",
-    category: "",
+    category: [],
     description: ""
   }); //objeto igual a input
   const [input, setInput] = useState({
@@ -22,7 +23,7 @@ export default function CreatePost() {
     color: "",
     price: "",
     image: "",
-    category: "",
+    category: [],
     description: ""
   });
 
@@ -61,21 +62,21 @@ export default function CreatePost() {
         color: "",
         price: "",
         image: "",
-        category: "",
+        category: [],
         description: ""
       });
 
-      setTypes([]);
+      setCategories([]);
       e.target.reset();
 //if
       alert("Prod created!");
     }
   };
 
-  const handleTypesChange = (e) => {
+  const handleCategoriesChange = (e) => {
     if (e.target.checked) {
-      setTypes([...types, e.target.value]);
-      setInput({ ...input, types: [...types, e.target.value] });
+      setCategories([...categories, e.target.value]);
+      setInput({ ...input, category: [...category, e.target.value] });
     }
 
     
@@ -160,22 +161,6 @@ export default function CreatePost() {
               </div>
             </div>
 
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="text"
-                  name="category"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.height}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Height</span>
-              </div>
-            </div>
-
-
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
@@ -210,14 +195,14 @@ export default function CreatePost() {
             </div>
 
           <div className={styles.types}>
-            <h3>Types</h3>
+            <h3>Categories</h3>
             <div className={styles.typesOrder}>
               {typesData.map((e) => (
                 <div className={styles.container}>
                   <ul className={styles.ksCboxtags}>
                     <li>
                       <input
-                        onChange={handleTypesChange}
+                        onChange={handleCategoriesChange}
                         type="checkbox"
                         id={`checkbox${e.id}`}
                         value={e.name}
