@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { validate } from "./validator.js";
 import { createPost } from "../../redux/actions/actions";
-import styles from "./PokemonCreate.module.css";
+import styles from "./CreatePost.module.css";
 
 
 export default function CreatePost() {
@@ -11,30 +11,21 @@ export default function CreatePost() {
   const [, setTypes] = useState([]);
   const [error, setError] = useState({
     name: "",
-    hp: "",
-    attack: "",
-    defense: "",
-    speed: "",
-    height: "",
-    weight: "",
+    color: "",
+    price: "",
     image: "",
-    types: [],
+    category: "",
+    description: ""
   }); //objeto igual a input
   const [input, setInput] = useState({
     name: "",
-    hp: "",
-    attack: "",
-    defense: "",
-    speed: "",
-    height: "",
-    weight: "",
+    color: "",
+    price: "",
     image: "",
-    types: [],
+    category: "",
+    description: ""
   });
 
-  useEffect(() => {
-    dispatch(getTypes());
- }, [dispatch]);
 
   const handleInputChange = (e) => {
     setInput({
@@ -67,14 +58,11 @@ export default function CreatePost() {
 
       setInput({
         name: "",
-        hp: "",
-        attack: "",
-        defense: "",
-        speed: "",
-        height: "",
-        weight: "",
+        color: "",
+        price: "",
         image: "",
-        types: [],
+        category: "",
+        description: ""
       });
 
       setTypes([]);
@@ -97,9 +85,9 @@ export default function CreatePost() {
     <div className={styles.body}>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.nav}>
-          <h1>Create Pokemon</h1>
+          <h1>Publicate</h1>
           <button className={styles.button}>Create</button>
-          <Link to="/home">
+          <Link to="/">
             <button className={styles.button}>Back</button>
           </Link>
         </div>
@@ -126,26 +114,12 @@ export default function CreatePost() {
               </div>
             </div>
 
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="number"
-                  name="hp"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.hp}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Healt Points </span>
-              </div>
-            </div>
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
-                  type="number"
-                  name="attack"
+                  type="text"
+                  name="color"
                   id="input-text"
                   required
                   spellCheck="false"
@@ -160,7 +134,7 @@ export default function CreatePost() {
               <div className={styles.inputBlock}>
                 <input
                   type="number"
-                  name="defense"
+                  name="price"
                   id="input-text"
                   required
                   spellCheck="false"
@@ -175,7 +149,7 @@ export default function CreatePost() {
               <div className={styles.inputBlock}>
                 <input
                   type="number"
-                  name="speed"
+                  name="image"
                   id="input-text"
                   required
                   spellCheck="false"
@@ -189,8 +163,8 @@ export default function CreatePost() {
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
-                  type="number"
-                  name="height"
+                  type="text"
+                  name="category"
                   id="input-text"
                   required
                   spellCheck="false"
@@ -201,20 +175,7 @@ export default function CreatePost() {
               </div>
             </div>
 
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="number"
-                  name="weight"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.weight}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Weight</span>
-              </div>
-            </div>
+
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
@@ -232,6 +193,21 @@ export default function CreatePost() {
               </div>
             </div>
           </div>
+
+          <div className={styles.centralize}>
+              <div className={styles.inputBlock}>
+                <input
+                  type="text"
+                  name="description"
+                  id="input-text"
+                  required
+                  spellCheck="false"
+                  value={input.weight}
+                  onChange={handleInputChange}
+                />
+                <span className={styles.placeholder}>Weight</span>
+              </div>
+            </div>
 
           <div className={styles.types}>
             <h3>Types</h3>
