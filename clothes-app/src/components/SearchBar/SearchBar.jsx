@@ -19,7 +19,7 @@ export default function SearchBar() {
       // verifica si el valor del campo de entrada no está vacío
       console.log(name);
       dispatch(getAllProductByName(name));
-      setName(""); // limpia el valor del campo de entrada después de enviar la acción
+      setName("");
     } else {
       alert("Enter a valid name");
     }
