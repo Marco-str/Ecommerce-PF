@@ -16,10 +16,6 @@ const Filters = () => {
     setUniqueCategories(uniqueCategories);
   }, [products]);
 
-  const handleFilterByPrice = () => {
-    // Implementa tu lógica para filtrar por precio aquí
-  };
-
   const handleResetFilter = () => {
     setSelectedCategory('');
     dispatch(resetFilters());
