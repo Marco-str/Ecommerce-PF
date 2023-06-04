@@ -1,4 +1,4 @@
-import { GET_ALL_PRODUCTS, FILTER_BY_GENDER, FILTER_BY_PRICE } from "../actions/actions";
+import { GET_ALL_PRODUCTS, FILTER_BY_CATEGORY, FILTER_BY_PRICE, FILTER_BY_COLOR, RESET_FILTERS } from "../actions/actions";
 
 const initialState = {
   products: [],
@@ -13,20 +13,20 @@ const rootReducer = (state = initialState, action) => {
         products: action.payload,
         allProducts: action.payload,
       };
-    case FILTER_BY_GENDER:
-      const { payload: gender } = action;
-      if (gender === 'all') {
+    case FILTER_BY_CATEGORY:
+      const { payload: category } = action;
+      if (category === "") {
         return {
           ...state,
           products: state.allProducts,
         };
       } else {
-        const filteredProducts = state.allProducts.filter(
-          (product) => product.gender === gender
+        const filteredByCategoryProducts = state.allProducts.filter(
+          (product) => product.category === category
         );
         return {
           ...state,
-          products: filteredProducts,
+          products: filteredByCategoryProducts,
         };
       }
     case FILTER_BY_PRICE:
@@ -38,6 +38,32 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         products: filteredByPriceProducts,
+      };
+    case FILTER_BY_COLOR:
+      const { payload: color } = action;
+      if (color === "") {
+        return {
+          ...state,
+          products: state.allProducts,
+        };
+      } else {
+        const filteredByColorProducts = state.allProducts.filter((product) => {
+          if (product.color && product.color.length > 0) {
+            return product.color.some(
+              (c) => c.ColorName && c.ColorName.toLowerCase() === color.toLowerCase()
+            );
+          }
+          return false;
+        });
+        return {
+          ...state,
+          products: filteredByColorProducts,
+        };
+      }
+    case RESET_FILTERS:
+      return {
+        ...state,
+        products: state.allProducts,
       };
     default:
       return state;
