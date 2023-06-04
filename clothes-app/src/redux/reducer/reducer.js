@@ -13,6 +13,18 @@ const rootReducer = (state = initialState, action) => {
         products: action.payload,
         allProducts: action.payload,
       };
+
+      case "GET_BY_NAME":
+        if (!action.payload.length) {
+          console.log('Prod not Found');
+          return alert("Prod not Found");
+        }
+        return {
+          ...state,
+          products: action.payload,
+        };
+
+
     case FILTER_BY_CATEGORY:
       const { payload: category } = action;
       if (category === "") {

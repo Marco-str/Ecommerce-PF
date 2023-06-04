@@ -22,10 +22,10 @@ export const getAllProducts = () => {
   };
 };
 
-export const getAllProductByName = () => {
+export const getAllProductByName = (name) => {
   return async (dispatch) => {
     try {
-      const products = await axios.get("http://localhost:3001/products");
+      const products = await axios.get(`http://localhost:3001/products?name=${name}`);
       dispatch({ type: GET_BY_NAME, payload: products.data });
     } catch (error) {
       console.log(error);
@@ -95,17 +95,17 @@ export const resetFilters = () => {
   };
 }
 
-export function createPubli(pokenuevo) {
+export function createPost(newprod) {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`/pokemons`, pokenuevo);
-      console.log('pokemon created por redux');
+      const response = await axios.post(`http://localhost:3001/product`, newprod);
+      console.log('prod created por redux');
     } catch (error) {
       console.log(error.message);
-      alert('no creo pokemon porque no quiero');
+      alert('no creo prod porque no quiero');
     }
   };
-}
+};
 
 export function cleanMyStore() {
   return {

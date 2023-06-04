@@ -23,6 +23,9 @@ ClothesModel(sequelize);
 
 const { User, Clothes } = sequelize.models;
 
+Clothes.belongsToMany(User, {through: 'cart'});
+User.belongsToMany(Clothes, {through: 'cart'});
+
 const options = {
   method: "GET",
   url: "https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list",
