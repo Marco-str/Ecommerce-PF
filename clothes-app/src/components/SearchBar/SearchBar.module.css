@@ -50,12 +50,12 @@ div.inputBlock {
 div.inputBlock input {
 	font-weight: 500;
 	font-size: 1rem;
-	color: #f0c305;
+	color: #8a1d8a;
 	width: 10em;
 	height: 10px;
 	padding: 15px 15px;
 	border-radius: 1rem;
-	border: 0.01rem solid  #f0c305;
+	border: 0.01rem solid  #8a1d8a;
 	outline:none;
 	background-color: #252525;
 	
@@ -66,7 +66,7 @@ div.inputBlock span.placeholder {
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: #f0c305;
+    color: #8a1d8a;
 	position: absolute;
 	margin: 12px 0;
 	padding: 0 5px;
@@ -87,7 +87,7 @@ div.inputBlock span.placeholder {
 }
 
 @keyframes animacion {
-	50% {color: rgb(255, 217, 0);}
+	50% {color: #8a1d8a;}
 	100% {color: rgb(255, 255, 255);}
   }
 
@@ -98,12 +98,12 @@ background: #252525;
 color:#fff
 }
 div.inputBlock input:focus{
-color: #f0c305;
-border-color: #f0c305;
+color: #8a1d8a;
+border-color: #8a1d8a;
 background: #252525;
 }
 div.inputBlock input:focus + span.placeholder {
-color: #f0c305;
+color: #8a1d8a;
 background: #252525;
 }
 
