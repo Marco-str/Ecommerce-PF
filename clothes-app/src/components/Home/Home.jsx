@@ -4,6 +4,7 @@ import { getAllProducts } from "../../redux/actions/actions";
 import CardsContainer from "../CardsContainer/CardsContainer";
 import Nav from "../Nav/Nav";
 import Filter from "../Filters/Filters";
+import SearchBar from "../SearchBar/SearchBar"
 import style from "./Home.module.css";
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
   return (
     <div className={style.container}>
       <Nav />
+      <SearchBar/>
       <Filter />
       <CardsContainer />
     </div>
