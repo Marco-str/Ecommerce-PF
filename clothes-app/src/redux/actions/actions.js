@@ -9,7 +9,7 @@ export const CLEAN_STORE='CLEAN_STORE';
 export const FILTER_BY_CATEGORY='FILTER_BY_CATEGORY';
 export const FILTER_BY_PRICE='FILTER_BY_PRICE';
 export const FILTER_BY_GENDER = 'FILTER_BY_GENDER';
-
+export const RESET_FILTERS = 'RESET_FILTERS'
 export const getAllProducts = () => {
   return async (dispatch) => {
     try {
@@ -82,12 +82,11 @@ export function filterByPrice(priceRange) {
   };
 };
 
-export function filterByGender(gender) {
+export const resetFilters = () => {
   return {
-    type: FILTER_BY_GENDER,
-    payload: gender,
+    type: RESET_FILTERS
   };
-}
+};
 
 export function createPubli(pokenuevo) {
   return async (dispatch) => {
