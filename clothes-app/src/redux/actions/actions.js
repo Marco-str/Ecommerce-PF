@@ -57,7 +57,7 @@ export function orderByName(payload) {
 export function getDetail(id) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`/pokemons/${id}`);
+      const response = await axios.get(`http://localhost:3001/products/${id}`);
       dispatch({
         type: GET_DETAIL,
         payload: response.data,
