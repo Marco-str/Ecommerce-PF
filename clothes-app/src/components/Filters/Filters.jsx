@@ -21,10 +21,10 @@ const Filters = () => {
     setUniqueCategories(uniqueCategories);
   }, [products]);
 
-  const newUniqueCategories = uniqueCategories.map((item) => {
-    const newString = item.replace(/_/g, " ");
-    return newString.charAt(0).toUpperCase() + newString.slice(1);
-  });
+  // const newUniqueCategories = uniqueCategories.map((item) => {
+  //   const newString = item.replace(/_/g, " ");
+  //   return newString.charAt(0).toUpperCase() + newString.slice(1);
+  // });
 
   const handleResetFilter = () => {
     setSelectedCategory("");
@@ -62,7 +62,7 @@ const Filters = () => {
           onChange={handleCategoryChange}
         >
           <option value="">All</option>
-          {newUniqueCategories.map((category) => (
+          {uniqueCategories.map((category) => (
             <option value={category} key={category}>
               {category}
             </option>
@@ -83,7 +83,7 @@ const Filters = () => {
           <span>$</span>
           <span> - </span>
           <input
-          className={styles["input"]}
+            className={styles["input"]}
             type="number"
             value={priceRange[1]}
             onChange={handleMaxPriceChange}
