@@ -56,7 +56,7 @@ const Filters = () => {
           <option value="">All</option>
           {uniqueCategories.map(category => (
             <option value={category} key={category}>
-              {category}
+              {category.replace(/_/g, ' ').charAt(0).toUpperCase() + category.replace(/_/g, ' ').slice(1)}
             </option>
           ))}
         </select>

@@ -1,7 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from "./components/Home/Home";
-import Carrito from "./components/Carrito/Carrito";
 import CreatePost from './components/CreatePost/CreatePost';
 import DashBoard from "./components/DashBoard/DashBoard";
 import Detail from "./components/Detail/Detail";
@@ -19,7 +18,6 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/detail/:id' element={<Detail/>}/>
       <Route path='/post' element={<CreatePost/>}/>
-      <Route path='/carrito' element={<Carrito/>}/>
       <Route path='/dash' element={<DashBoard/>}/>
     </Routes>
    </div>)
