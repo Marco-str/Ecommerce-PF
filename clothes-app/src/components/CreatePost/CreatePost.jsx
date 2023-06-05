@@ -3,38 +3,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { validate } from "./validator.js";
 import { createPost } from "../../redux/actions/actions";
-import styles from "./PokemonCreate.module.css";
+import styles from "./CreatePost.module.css";
+import { getAllProducts } from "../../redux/actions/actions";
 
 
 export default function CreatePost() {
   const dispatch = useDispatch();
-  const [, setTypes] = useState([]);
-  const [error, setError] = useState({
-    name: "",
-    hp: "",
-    attack: "",
-    defense: "",
-    speed: "",
-    height: "",
-    weight: "",
-    image: "",
-    types: [],
-  }); //objeto igual a input
-  const [input, setInput] = useState({
-    name: "",
-    hp: "",
-    attack: "",
-    defense: "",
-    speed: "",
-    height: "",
-    weight: "",
-    image: "",
-    types: [],
-  });
+  const products = useSelector((state) => state.products);
+
+  // Obtenemos todas las categorías únicas de los productos
+  const uniqueCategories = Array.from(
+    new Set(products.map((product) => product.category))
+  );
+  const [categories, setCategories] = useState(uniqueCategories);
 
   useEffect(() => {
-    dispatch(getTypes());
- }, [dispatch]);
+    dispatch(getAllProducts());
+  }, [dispatch]);
+
+  const [error, setError] = useState({
+    name: "",
+    color: "",
+    price: "",
+    image: "",
+    category: [],
+    description: "",
+  });
+
+  const [input, setInput] = useState({
+    name: "",
+    color: "",
+    price: "",
+    image: "",
+    category: [],
+    description: "",
+  });
 
   const handleInputChange = (e) => {
     setInput({
@@ -52,61 +55,72 @@ export default function CreatePost() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if (types.length > 2) {
+
+    if (input.category.length > 2) {
       return alert("Choose only two types");
     }
-    // if (!error && types.length) {
-    //  alert('errorrr')
-    // }
-    if (!types.length) {
-      alert("Select a Category");
-    } else {
-      
-      dispatch(createPost(input));
 
-      setInput({
-        name: "",
-        hp: "",
-        attack: "",
-        defense: "",
-        speed: "",
-        height: "",
-        weight: "",
-        image: "",
-        types: [],
-      });
-
-      setTypes([]);
-      e.target.reset();
-//if
-      alert("Prod created!");
+    if (input.category.length === 0) {
+      return alert("Select a Category");
     }
+
+    dispatch(createPost(input));
+
+    setInput({
+      name: "",
+      color: "",
+      price: "",
+      image: "",
+      category: [],
+      description: "",
+    });
+
+    setError({
+      name: "",
+      color: "",
+      price: "",
+      image: "",
+      category: [],
+      description: "",
+    });
+
+    e.target.reset();
+
+    alert("Post created!");
   };
 
-  const handleTypesChange = (e) => {
+  const handleCategoriesChange = (e) => {
+    const selectedCategories = [...input.category];
+
     if (e.target.checked) {
-      setTypes([...types, e.target.value]);
-      setInput({ ...input, types: [...types, e.target.value] });
+      if (!selectedCategories.includes(e.target.value)) {
+        selectedCategories.push(e.target.value);
+      }
+    } else {
+      const index = selectedCategories.indexOf(e.target.value);
+      if (index > -1) {
+        selectedCategories.splice(index, 1);
+      }
     }
 
-    
+    setInput({ ...input, category: selectedCategories });
   };
 
   return (
     <div className={styles.body}>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.nav}>
-          <h1>Create Pokemon</h1>
+          <h1>Publicate</h1>
           <button className={styles.button}>Create</button>
-          <Link to="/home">
+          <Link to="/">
             <button className={styles.button}>Back</button>
           </Link>
         </div>
 
         <div className={styles.statsAndTypes}>
+
           <div className={styles.stats}>
-            <h3>Stats</h3>
+            <h3>Characteristics</h3>
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
@@ -119,40 +133,24 @@ export default function CreatePost() {
                   value={input.name}
                   onChange={handleInputChange}
                 />
-
                 {error.name && <p>{error.name}</p>}
-
                 <span className={styles.placeholder}>Name</span>
               </div>
             </div>
 
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="number"
-                  name="hp"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.hp}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Healt Points </span>
-              </div>
-            </div>
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
-                  type="number"
-                  name="attack"
+                  type="text"
+                  name="color"
                   id="input-text"
                   required
                   spellCheck="false"
                   value={input.attack}
                   onChange={handleInputChange}
                 />
-                <span className={styles.placeholder}>Attack</span>
+                <span className={styles.placeholder}>Color</span>
               </div>
             </div>
 
@@ -160,61 +158,17 @@ export default function CreatePost() {
               <div className={styles.inputBlock}>
                 <input
                   type="number"
-                  name="defense"
+                  name="price"
                   id="input-text"
                   required
                   spellCheck="false"
                   value={input.defense}
                   onChange={handleInputChange}
                 />
-                <span className={styles.placeholder}>Defense</span>
+                <span className={styles.placeholder}>Price</span>
               </div>
             </div>
 
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="number"
-                  name="speed"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.speed}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Speed</span>
-              </div>
-            </div>
-
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="number"
-                  name="height"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.height}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Height</span>
-              </div>
-            </div>
-
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="number"
-                  name="weight"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.weight}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Weight</span>
-              </div>
-            </div>
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
@@ -231,29 +185,49 @@ export default function CreatePost() {
                 <span className={styles.placeholder}>Image Link: </span>
               </div>
             </div>
-          </div>
+          
 
+          <div className={styles.centralize}>
+              <div className={styles.inputBlock}>
+                <input
+                  type="text"
+                  name="description"
+                  id="input-text"
+                  required
+                  spellCheck="false"
+                  value={input.weight}
+                  onChange={handleInputChange}
+                />
+                <span className={styles.placeholder}>Description</span>
+              </div>
+            </div>
+            
+          </div>
+          
+          
           <div className={styles.types}>
-            <h3>Types</h3>
+            <h3>Categories</h3>
             <div className={styles.typesOrder}>
-              {typesData.map((e) => (
+              {uniqueCategories.map((e) => (
                 <div className={styles.container}>
                   <ul className={styles.ksCboxtags}>
                     <li>
                       <input
-                        onChange={handleTypesChange}
+                        onChange={handleCategoriesChange}
                         type="checkbox"
-                        id={`checkbox${e.id}`}
-                        value={e.name}
+                        id={`checkbox${e}`}
+                        value={e}
                       />
-                      <label for={`checkbox${e.id}`}>{e.name}</label>
+                      <label htmlFor={`checkbox${e}`}>{e}</label>
                     </li>
                   </ul>
                 </div>
               ))}
             </div>
           </div>
+          
         </div>
+        
       </form>
     </div>
   );

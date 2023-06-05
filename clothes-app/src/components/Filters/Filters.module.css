@@ -1,47 +1,47 @@
 .filter-container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 300px;
-  }
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+  margin-left: 55px;
+}
+
+.select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #8a1d8a;
+  border-radius: 4px;
   
-  .filter-section {
-    margin-bottom: 20px;
-  }
-  
-  h3 {
-    margin-top: 0;
-  }
-  
-  h4 {
-    margin-top: 0;
-  }
-  
-  select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  input[type="range"] {
-    width: 100%;
-  }
-  
-  button {
-    padding: 8px 16px;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .reset-button {
-    background-color: #f44336;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
+}
+
+.button {
+  padding: 8px 16px;
+  background-color: #8a1d8a;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.reset-button {
+  background-color: #c9c2c2;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.price-input{
+  margin-left: 55px;
+}
+
+.input{
+  margin: 10px;
+}
