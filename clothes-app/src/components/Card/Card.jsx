@@ -1,13 +1,13 @@
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
 
-const Card = ({ name, image }) => {
+const Card = ({ name, image, id }) => {
   // Desestructurar la prop 'name' de las props
   return (
     <div className={style.mainContainer}>
       <p className={style.title}>{name}</p>
       <img className={style.card} src={image} alt="" />
-      {<Link>Learn more</Link>}
+      {<Link to={`/detail/${id}`} >Learn more</Link>}
     </div>
   );
 };

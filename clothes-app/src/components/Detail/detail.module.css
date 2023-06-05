@@ -38,7 +38,11 @@
   .img{
     height: 70%;
     width: 70%;
-    background-color: azure;
+    /* background-color: azure; */
+  }
+
+  .imgProducto{
+    height: 100%;
   }
   
   /* CONTENEDOR PRINCIPAL 2 */
@@ -94,6 +98,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    color: azure;
+    font-weight: 600;
+  }
+
+  .bttnBack{
+    width: 100px;
+    height: 65px;
+    padding: 5%;
+    border-radius: 18px;
+    background-color: purple;
+    color: azure;
+    font-weight: 600;
   }
   
   /* INPUTS */

@@ -36,6 +36,7 @@ const CardsContainer = () => {
                   key={product.id}
                   name={product.name}
                   image={product.image}
+                  id={product.id}
                 />
               </div>
             </>
