@@ -44,10 +44,10 @@ const CardsContainer = () => {
       </div>
       <div>
         <div className="clicks">
-          <button className="button" onClick={prevPage}>
+          <button className={style.paginado} onClick={prevPage}>
             Anterior
           </button>
-          <button className="button" onClick={nextPage}>
+          <button className={style.paginado} onClick={nextPage}>
             Siguiente
           </button>
         </div>
