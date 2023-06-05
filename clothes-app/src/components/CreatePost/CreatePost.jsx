@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { validate } from "./validator.js";
 import { createPost } from "../../redux/actions/actions";
 import styles from "./CreatePost.module.css";
+import { getAllProducts } from "../../redux/actions/actions";
+
 
 export default function CreatePost() {
   const dispatch = useDispatch();
@@ -13,6 +15,11 @@ export default function CreatePost() {
   const uniqueCategories = Array.from(
     new Set(products.map((product) => product.category))
   );
+  const [categories, setCategories] = useState(uniqueCategories);
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   const [error, setError] = useState({
     name: "",
@@ -111,8 +118,9 @@ export default function CreatePost() {
         </div>
 
         <div className={styles.statsAndTypes}>
+
           <div className={styles.stats}>
-            <h3>Stats</h3>
+            <h3>Characteristics</h3>
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
@@ -125,9 +133,7 @@ export default function CreatePost() {
                   value={input.name}
                   onChange={handleInputChange}
                 />
-
                 {error.name && <p>{error.name}</p>}
-
                 <span className={styles.placeholder}>Name</span>
               </div>
             </div>
@@ -144,7 +150,7 @@ export default function CreatePost() {
                   value={input.attack}
                   onChange={handleInputChange}
                 />
-                <span className={styles.placeholder}>Attack</span>
+                <span className={styles.placeholder}>Color</span>
               </div>
             </div>
 
@@ -159,22 +165,7 @@ export default function CreatePost() {
                   value={input.defense}
                   onChange={handleInputChange}
                 />
-                <span className={styles.placeholder}>Defense</span>
-              </div>
-            </div>
-
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="number"
-                  name="image"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.speed}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Speed</span>
+                <span className={styles.placeholder}>Price</span>
               </div>
             </div>
 
@@ -194,7 +185,7 @@ export default function CreatePost() {
                 <span className={styles.placeholder}>Image Link: </span>
               </div>
             </div>
-          </div>
+          
 
           <div className={styles.centralize}>
               <div className={styles.inputBlock}>
@@ -207,10 +198,13 @@ export default function CreatePost() {
                   value={input.weight}
                   onChange={handleInputChange}
                 />
-                <span className={styles.placeholder}>Weight</span>
+                <span className={styles.placeholder}>Description</span>
               </div>
             </div>
-
+            
+          </div>
+          
+          
           <div className={styles.types}>
             <h3>Categories</h3>
             <div className={styles.typesOrder}>
@@ -221,17 +215,19 @@ export default function CreatePost() {
                       <input
                         onChange={handleCategoriesChange}
                         type="checkbox"
-                        id={`checkbox${e.id}`}
-                        value={e.name}
+                        id={`checkbox${e}`}
+                        value={e}
                       />
-                      <label for={`checkbox${e.id}`}>{e.name}</label>
+                      <label htmlFor={`checkbox${e}`}>{e}</label>
                     </li>
                   </ul>
                 </div>
               ))}
             </div>
           </div>
+          
         </div>
+        
       </form>
     </div>
   );
