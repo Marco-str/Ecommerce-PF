@@ -214,7 +214,7 @@ export default function CreatePost() {
           <div className={styles.types}>
             <h3>Categories</h3>
             <div className={styles.typesOrder}>
-              {typesData.map((e) => (
+              {uniqueCategories.map((e) => (
                 <div className={styles.container}>
                   <ul className={styles.ksCboxtags}>
                     <li>
