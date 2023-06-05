@@ -17,7 +17,6 @@ const Home = () => {
   return (
     <div className={style.container}>
       <Nav />
-     
       <Filter />
       <CardsContainer />
     </div>
