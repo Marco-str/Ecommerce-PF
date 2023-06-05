@@ -1,32 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { validate } from "./validator.js";
 import { createPost } from "../../redux/actions/actions";
 import styles from "./CreatePost.module.css";
 
-
 export default function CreatePost() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products); 
-  const [categories, setCategories] = useState([]);
+  const products = useSelector((state) => state.products);
+
+  // Obtenemos todas las categorías únicas de los productos
+  const uniqueCategories = Array.from(
+    new Set(products.map((product) => product.category))
+  );
+
   const [error, setError] = useState({
     name: "",
     color: "",
     price: "",
     image: "",
     category: [],
-    description: ""
-  }); //objeto igual a input
+    description: "",
+  });
+
   const [input, setInput] = useState({
     name: "",
     color: "",
     price: "",
     image: "",
     category: [],
-    description: ""
+    description: "",
   });
-
 
   const handleInputChange = (e) => {
     setInput({
@@ -44,42 +48,55 @@ export default function CreatePost() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if (types.length > 2) {
+
+    if (input.category.length > 2) {
       return alert("Choose only two types");
     }
-    // if (!error && types.length) {
-    //  alert('errorrr')
-    // }
-    if (!types.length) {
-      alert("Select a Category");
-    } else {
-      
-      dispatch(createPost(input));
 
-      setInput({
-        name: "",
-        color: "",
-        price: "",
-        image: "",
-        category: [],
-        description: ""
-      });
-
-      setCategories([]);
-      e.target.reset();
-//if
-      alert("Prod created!");
+    if (input.category.length === 0) {
+      return alert("Select a Category");
     }
+
+    dispatch(createPost(input));
+
+    setInput({
+      name: "",
+      color: "",
+      price: "",
+      image: "",
+      category: [],
+      description: "",
+    });
+
+    setError({
+      name: "",
+      color: "",
+      price: "",
+      image: "",
+      category: [],
+      description: "",
+    });
+
+    e.target.reset();
+
+    alert("Post created!");
   };
 
   const handleCategoriesChange = (e) => {
+    const selectedCategories = [...input.category];
+
     if (e.target.checked) {
-      setCategories([...categories, e.target.value]);
-      setInput({ ...input, category: [...category, e.target.value] });
+      if (!selectedCategories.includes(e.target.value)) {
+        selectedCategories.push(e.target.value);
+      }
+    } else {
+      const index = selectedCategories.indexOf(e.target.value);
+      if (index > -1) {
+        selectedCategories.splice(index, 1);
+      }
     }
 
-    
+    setInput({ ...input, category: selectedCategories });
   };
 
   return (

@@ -10,9 +10,8 @@ const Nav = () => {
       <Link className={style.link} to="/home">
         Example
       </Link>
-      <Link className={style.link} to="/create">
-        Example
-      </Link>
+     
+      <Link to='/post'><button className={styles.button}>Publicate</button></Link>
     </div>
   );
 };
