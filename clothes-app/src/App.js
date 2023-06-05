@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from "./components/Home/Home";
-import Carrito from "./components/Carrito/Carrito";
+import Carrito from "./components/Carrito/carrito";
 import CreatePost from './components/CreatePost/CreatePost';
 import DashBoard from "./components/DashBoard/DashBoard";
 import Detail from "./components/Detail/Detail";
