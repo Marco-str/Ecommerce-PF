@@ -1,18 +1,27 @@
-const axios = require("axios");
-require("dotenv").config();
-const { API_KEY } = process.env;
+const { Op } = require("sequelize");
+const { Clothes } = require('../db');
 
-const getProducts = async function () {
-  const options = {
-    method: "GET",
-    url: "https://apidojo-forever21-v1.p.rapidapi.com/products/v2/list",
-    headers: {
-      "X-RapidAPI-Key": "5cb16b518emsh43b2799f3ae9f2cp1c309ejsna6cd07c2a424",
-      "X-RapidAPI-Host": "apidojo-forever21-v1.p.rapidapi.com",
-    },
-  };
-    const response = await axios.request(options);
-    return response;
+
+const getProducts = async function (name) {
+
+  if (name) {
+   
+    const products = await Clothes.findAll({
+      where: { name:
+         { [Op.iLike]: `%${name}%` } },
+    });
+    if (products.length === 0) {
+     throw new Error("No se encontraron productos");
+    }
+    return products;
+
+  } else {
+
+    const products = await Clothes.findAll();
+    return products;
+
+  }
+
 };
 
-module.exports = getProducts; 
+module.exports = getProducts ; 

@@ -9,38 +9,37 @@ module.exports = (sequelize) => {
 
         {
             id: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.STRING,
                 primaryKey: true,
-
             },
-            size: {
-                type: DataTypes.ARRAY (DataTypes.JSON),
+            name:{
+                type: DataTypes.STRING,
                 allowNull: false,
             },
             color: {
-                type: DataTypes.STRING,
+                type: DataTypes.ARRAY (DataTypes.JSON),
                 allowNull: false,
             },
-            listPrice: {
+            price: {
                 type: DataTypes.FLOAT,
                 allowNull: false,
             },
-            defaultProductImage: {
+            image: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            variantPrductImage: {
+            category: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            categoryName: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-            },
-            primaryParentCategory: {
+            parentCategory: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            description:{
+                type: DataTypes.TEXT,
+                allowNull: false,
+            }
         },
         {
             timestamps: false,
