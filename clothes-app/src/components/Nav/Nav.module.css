@@ -1,15 +1,24 @@
 .mainContainer {
   display: flex;
+  flex-direction: row;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   height: 85px;
-  padding: 5px 40%;
   background-color: rgb(150, 82, 177);
+
 }
+
+
+
+
+
+
 
 .link {
   color: black;
   text-decoration: none;
+  margin: 1.5%;
 }
 
 .link:hover {
@@ -17,4 +26,16 @@
   font-stretch: 7;
   text-decoration: underline;
   text-shadow: 1px 1px 2px #0000005d;
+}
+
+.title {
+  cursor: pointer;
+  color: #0a040a;
+  margin-left: 1%;
+  animation-name: aparecer;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+  
 }
