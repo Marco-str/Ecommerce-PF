@@ -28,6 +28,7 @@
   text-shadow: 1px 1px 2px #0000005d;
 }
 
+
 .title {
   cursor: pointer;
   color: #0a040a;
@@ -39,3 +40,4 @@
   animation-fill-mode: both;
   
 }
+
