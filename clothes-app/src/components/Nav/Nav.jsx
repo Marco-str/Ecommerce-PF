@@ -5,20 +5,16 @@ import SearchBar from "../SearchBar/SearchBar";
 const Nav = () => {
   return (
     <div className={style.mainContainer}>
-      <div className={style.divs1}>
-        <Link className={style.link} to="/">
-          Home
-        </Link>
-      </div>
-      <div className={style.divs2}>
-        {" "}
-        <Link to="/post">
-          <button className={style.button}>Publicate</button>
-        </Link>
-      </div>
-      <div className={style.divs3}>
-        <SearchBar />
-      </div>
+
+
+     <Link className={style.link} to='/'>
+            <h1 className={style.title}>ClotheStore</h1>
+                </Link>
+      
+     
+      <Link to='/post'><button className={style.button}>Publicate</button></Link>
+      <SearchBar/>
+
     </div>
   );
 };
