@@ -7,7 +7,7 @@ const Card = ({ name, image, id }) => {
     <div className={style.mainContainer}>
       <h4 className={style.title}>{name}</h4>
       <img className={style.card} src={image} alt="" />
-      {<Link to={`/detail/${id}`} >Learn more</Link>}
+      {<Link className={style.link} to={`/detail/${id}`} >Learn more</Link>}
 
     </div>
   );
