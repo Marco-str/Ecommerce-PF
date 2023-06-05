@@ -1,8 +1,9 @@
-import { GET_ALL_PRODUCTS, FILTER_BY_CATEGORY, FILTER_BY_PRICE, FILTER_BY_COLOR, RESET_FILTERS } from "../actions/actions";
+import { GET_ALL_PRODUCTS, FILTER_BY_CATEGORY, FILTER_BY_PRICE, FILTER_BY_COLOR, RESET_FILTERS, GET_DETAIL } from "../actions/actions";
 
 const initialState = {
   products: [],
   allProducts: [],
+  productDetail: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -77,6 +78,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         products: state.allProducts,
       };
+    case GET_DETAIL:
+    return {
+      ...state,
+      productDetail: action.payload,
+    }
     default:
       return state;
   }
