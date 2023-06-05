@@ -5,9 +5,10 @@ const Card = ({ name, image, id }) => {
   // Desestructurar la prop 'name' de las props
   return (
     <div className={style.mainContainer}>
-      <p className={style.title}>{name}</p>
+      <h4 className={style.title}>{name}</h4>
       <img className={style.card} src={image} alt="" />
       {<Link to={`/detail/${id}`} >Learn more</Link>}
+
     </div>
   );
 };
