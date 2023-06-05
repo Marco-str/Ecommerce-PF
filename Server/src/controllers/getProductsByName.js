@@ -1,13 +1,17 @@
 const { Clothes } = require("../db");
+const { Op } = require("sequelize");
+
 
 const getProductsByName = async function (name) {
-  console.log("Nombre recibido:", name); 
 
-  const products = await Clothes.findAll({
+  const products = await Clothes.findOne({
     where: {
-      name: name,
+      name: {
+        [Op.like]: `%${name}%`,
+      },
     },
   });
+  
   return products;
 };
 

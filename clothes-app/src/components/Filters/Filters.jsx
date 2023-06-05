@@ -55,7 +55,7 @@ const Filters = () => {
   return (
     <div className={styles["filter-container"]}>
       <div className={styles["filter-section"]}>
-        <h4>Categories</h4>
+        <h4 className={styles["h4"]}> Categories</h4>
         <select
           className={styles["select"]}
           value={selectedCategory}
@@ -70,10 +70,11 @@ const Filters = () => {
         </select>
       </div>
       <div className={styles["filter-section"]}>
-        <h4>Price Range</h4>
+        <h4 className={styles["h4"]}>Price Range</h4>
         <div className={styles["price-input"]}>
           <input
             type="number"
+            className={styles["input"]}
             value={priceRange[0]}
             onChange={handleMinPriceChange}
             min={0}

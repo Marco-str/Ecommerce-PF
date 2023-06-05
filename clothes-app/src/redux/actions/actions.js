@@ -25,7 +25,9 @@ export const getAllProducts = () => {
 export const getAllProductByName = (name) => {
   return async (dispatch) => {
     try {
-      const products = await axios.get(`http://localhost:3001/products?name=${name}`);
+      const products = await axios.get(
+        `http://localhost:3001/products?name=${name}`
+      );
       dispatch({ type: GET_BY_NAME, payload: products.data });
     } catch (error) {
       console.log(error);
@@ -57,13 +59,13 @@ export function orderByName(payload) {
 export function getDetail(id) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`/pokemons/${id}`);
+      const response = await axios.get(`http://localhost:3001/products/${id}`);
       dispatch({
         type: GET_DETAIL,
         payload: response.data,
       });
     } catch (error) {
-      console.log('PROD not found');
+      console.log("PROD not found");
     }
   };
 }
@@ -93,19 +95,22 @@ export const resetFilters = () => {
   return {
     type: RESET_FILTERS,
   };
-}
+};
 
 export function createPost(newprod) {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`http://localhost:3001/product`, newprod);
-      console.log('prod created por redux');
+      const response = await axios.post(
+        `http://localhost:3001/product`,
+        newprod
+      );
+      console.log("prod created por redux");
     } catch (error) {
       console.log(error.message);
-      alert('no creo prod porque no quiero');
+      alert("Este proceso se encuentra en desarrollo...");
     }
   };
-};
+}
 
 export function cleanMyStore() {
   return {
