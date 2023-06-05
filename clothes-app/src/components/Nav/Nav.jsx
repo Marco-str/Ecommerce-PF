@@ -1,5 +1,6 @@
 import style from "./Nav.module.css";
 import { Link } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar"
 
 const Nav = () => {
   return (
@@ -7,12 +8,10 @@ const Nav = () => {
       <Link className={style.link} to="/">
         Example
       </Link>
-      <Link className={style.link} to="/home">
-        Example
-      </Link>
-      <Link className={style.link} to="/create">
-        Example
-      </Link>
+      
+     
+      <Link to='/post'><button className={style.button}>Publicate</button></Link>
+      <SearchBar/>
     </div>
   );
 };
