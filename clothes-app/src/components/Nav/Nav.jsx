@@ -15,11 +15,11 @@ const Nav = () => {
 
 
       <Link className={style.link} to="/login">
-        <h1 className={style.title}>Log in</h1>
+        <button className={style.title}>Log in</button>
       </Link>
 
       <Link className={style.link} to="/signup">
-        <h1 className={style.title}>Sign up</h1>
+        <button className={style.title}>Sign up</button>
       </Link>
 
       <SearchBar />

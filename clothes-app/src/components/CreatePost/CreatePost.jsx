@@ -23,7 +23,10 @@ export default function CreatePost() {
 
   const [error, setError] = useState({
     name: "",
-    color: "",
+    color1: "",
+    SizesColor1: [],
+    SizesColor2: [],
+    color2: "",
     price: "",
     image: "",
     category: [],
@@ -32,7 +35,10 @@ export default function CreatePost() {
 
   const [input, setInput] = useState({
     name: "",
-    color: "",
+    color1: "",
+    SizesColor1: [],
+    SizesColor2: [],
+    color2: "",
     price: "",
     image: "",
     category: [],
@@ -68,7 +74,10 @@ export default function CreatePost() {
 
     setInput({
       name: "",
-      color: "",
+      color1: "",
+    SizesColor1: [],
+    SizesColor2: [],
+    color2: "",
       price: "",
       image: "",
       category: [],
@@ -77,7 +86,10 @@ export default function CreatePost() {
 
     setError({
       name: "",
-      color: "",
+      color1: "",
+      SizesColor1: [],
+      SizesColor2: [],
+      color2: "",
       price: "",
       image: "",
       category: [],
@@ -240,7 +252,7 @@ export default function CreatePost() {
 
 // const createPost = async (req, res) => {
 //   try {
-//     const {   name, color, price, image, category, description } = req.body;
+//     const {   name, color1, color2, SizesColor1, SizesColor2, price, image, category, description } = req.body;
 //     const findClothe = await Clothes.findOne({
 //       where: { name: name.toLowerCase() },//ver esto de lowerCase
 //     });//Solo se fija si existe entre los creados
