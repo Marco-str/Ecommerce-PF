@@ -1,42 +1,37 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { validate } from "./validator.js";
-import { createUser } from "../../redux/actions/actions";//
 import styles from "./SignUp.module.css";
-import { getAllProducts } from "../../redux/actions/actions";//
-
+import { getUserByEmail } from "../../redux/actions/actions";
 
 
 export default function SignUp() {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
+  const email = useSelector((state) => state.user.email);
 
-  // Obtenemos todas las categorías únicas de los productos
-  const uniqueCategories = Array.from(
-    new Set(products.map((product) => product.category))
-  );
-  const [categories, setCategories] = useState(uniqueCategories);
 
   useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
+    dispatch(getUserByEmail(email));
+  }, [dispatch, email]);
+
 
   const [error, setError] = useState({
     name: "",
     phone: "",
     email: "",
+    password: "",
     image: "",
-    category: [],
+    admin: false
   });
 
   const [input, setInput] = useState({
     name: "",
-    color: "",
-    price: "",
+    phone: "",
+    email: "",
+    password: "",
     image: "",
-    category: [],
-    description: "",
+    admin: false
   });
 
   const handleInputChange = (e) => {
@@ -64,77 +59,58 @@ export default function SignUp() {
       return alert("Select a Category");
     }
 
-    // dispatch(createPost(input));
+    // dispatch(validateUser(input));
 
     setInput({
       name: "",
-      color: "",
-      price: "",
+      phone: "",
+      email: "",
+      password: "",
       image: "",
-      category: [],
-      description: "",
+      admin: false
     });
 
     setError({
       name: "",
-      color: "",
-      price: "",
+      phone: "",
+      email: "",
+      password: "",
       image: "",
-      category: [],
-      description: "",
+      admin: false
     });
 
     e.target.reset();
 
-    alert("Post created!");
+    alert("You are Up!");
   };
 
-  const handleCategoriesChange = (e) => {
-    const selectedCategories = [...input.category];
 
-    if (e.target.checked) {
-      if (!selectedCategories.includes(e.target.value)) {
-        selectedCategories.push(e.target.value);
-      }
-    } else {
-      const index = selectedCategories.indexOf(e.target.value);
-      if (index > -1) {
-        selectedCategories.splice(index, 1);
-      }
-    }
-
-    setInput({ ...input, category: selectedCategories });
-  };
 
   return (
     <div className={styles.body}>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.nav}>
-          <h1>Publicate</h1>
-          <button className={styles.button}>Create</button>
+          <h1>Sign up</h1>
           <Link to="/">
             <button className={styles.button}>Back</button>
           </Link>
         </div>
 
-        <div className={styles.statsAndTypes}>
-
           <div className={styles.stats}>
-            <h3>Characteristics</h3>
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
-                  type="text"
-                  name="name"
+                  type="email"
+                  name="email"
                   id="input-text"
                   required
                   spellCheck="false"
-                  value={input.name}
+                  value={input.email}
                   onChange={handleInputChange}
                 />
                 {error.name && <p>{error.name}</p>}
-                <span className={styles.placeholder}>Name</span>
+                <span className={styles.placeholder}>Email</span>
               </div>
             </div>
 
@@ -142,89 +118,19 @@ export default function SignUp() {
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
-                  type="text"
-                  name="color"
+                  type="password"
+                  name="password"
                   id="input-text"
                   required
                   spellCheck="false"
-                  value={input.attack}
+                  value={input.password}
                   onChange={handleInputChange}
                 />
-                <span className={styles.placeholder}>Color</span>
-              </div>
-            </div>
-
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="number"
-                  name="price"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.defense}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Price</span>
-              </div>
-            </div>
-
-
-            <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="text"
-                  name="image"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.image}
-                  onChange={handleInputChange}
-                />
-                {error.image && <p>{error.image}</p>}
-                <span className={styles.placeholder}>Image Link: </span>
-              </div>
-            </div>
-          
-
-          <div className={styles.centralize}>
-              <div className={styles.inputBlock}>
-                <input
-                  type="text"
-                  name="description"
-                  id="input-text"
-                  required
-                  spellCheck="false"
-                  value={input.weight}
-                  onChange={handleInputChange}
-                />
-                <span className={styles.placeholder}>Description</span>
+                <span className={styles.placeholder}>Password</span>
               </div>
             </div>
             
-          </div>
           
-          
-          <div className={styles.types}>
-            <h3>Categories</h3>
-            <div className={styles.typesOrder}>
-              {uniqueCategories.map((e) => (
-                <div className={styles.container}>
-                  <ul className={styles.ksCboxtags}>
-                    <li>
-                      <input
-                        onChange={handleCategoriesChange}
-                        type="checkbox"
-                        id={`checkbox${e}`}
-                        value={e}
-                      />
-                      <label htmlFor={`checkbox${e}`}>{e}</label>
-                    </li>
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
           
         </div>
         
@@ -232,6 +138,26 @@ export default function SignUp() {
     </div>
   );
 }
+
+
+// const { Clothes } = require("../db");
+// const { Op } = require("sequelize");
+
+
+// const getUserByEmail = async function (email) {
+
+//   const user = await Clothes.findOne({
+//     where: {
+//       name: {
+//         [Op.like]: `%${email}%`,
+//       },
+//     },
+//   });
+  
+//   return user;
+// };
+
+// module.exports = getUserByEmail;
 
 
 //////
