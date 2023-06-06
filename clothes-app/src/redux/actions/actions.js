@@ -10,6 +10,7 @@ export const FILTER_BY_CATEGORY = "FILTER_BY_CATEGORY";
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
 export const FILTER_BY_COLOR = "FILTER_BY_COLOR"; // Nueva acción agregada
 export const RESET_FILTERS = "RESET_FILTERS";
+export const GET_USER = "GET_USER";
 
 export const getAllProducts = () => {
   return async (dispatch) => {
@@ -111,6 +112,36 @@ export function createPost(newprod) {
     }
   };
 }
+
+
+export function createUser(user) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/user`,
+        user
+      );
+      console.log("user created por redux");
+    } catch (error) {
+      console.log(error.message);
+      alert("Este proceso se encuentra en desarrollo...");
+    }
+  };
+}
+
+export const getUserByEmail = (email) => {
+  return async (dispatch) => {
+    try {
+      const user = await axios.get(
+        `http://localhost:3001/user?email=${email}`
+      );
+      dispatch({ type: GET_USER, payload: user.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 
 export function cleanMyStore() {
   return {
