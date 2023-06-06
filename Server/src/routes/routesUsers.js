@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const  getAllUsers  = require("../controllers/getUsers");
 
-const jwt = require("jsonwebtoken");
+
 const signUp = require("../controllers/signUp");
 
 
