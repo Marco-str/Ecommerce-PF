@@ -1,5 +1,5 @@
 const {Clothes} = require('../db');
-require("dotenv").config();
+
 
 
 const getProductById = async function (id) {
