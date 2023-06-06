@@ -98,6 +98,36 @@ export default function SignUp() {
 
           <div className={styles.stats}>
 
+          <div className={styles.centralize}>
+              <div className={styles.inputBlock}>
+                <input
+                  type="text"
+                  name="name"
+                  id="input-text"
+                  required
+                  spellCheck="false"
+                  value={input.password}
+                  onChange={handleInputChange}
+                />
+                <span className={styles.placeholder}>Name</span>
+              </div>
+            </div>
+
+            <div className={styles.centralize}>
+              <div className={styles.inputBlock}>
+                <input
+                  type="text"
+                  name="phone"
+                  id="input-text"
+                  required
+                  spellCheck="false"
+                  value={input.password}
+                  onChange={handleInputChange}
+                />
+                <span className={styles.placeholder}>Phone</span>
+              </div>
+            </div>
+
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
@@ -109,7 +139,7 @@ export default function SignUp() {
                   value={input.email}
                   onChange={handleInputChange}
                 />
-                {error.name && <p>{error.name}</p>}
+                {error.email && <p>{error.email}</p>}
                 <span className={styles.placeholder}>Email</span>
               </div>
             </div>
@@ -127,6 +157,22 @@ export default function SignUp() {
                   onChange={handleInputChange}
                 />
                 <span className={styles.placeholder}>Password</span>
+              </div>
+            </div>
+
+            <div className={styles.centralize}>
+              <div className={styles.inputBlock}>
+                <input
+                  type="text"
+                  name="image"
+                  id="input-text"
+                  required
+                  spellCheck="false"
+                  value={input.image}
+                  onChange={handleInputChange}
+                />
+                {error.image && <p>{error.image}</p>}
+                <span className={styles.placeholder}>Image Link: </span>
               </div>
             </div>
             

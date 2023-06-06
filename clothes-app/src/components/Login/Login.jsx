@@ -93,7 +93,7 @@ export default function Login() {
                   value={input.email}
                   onChange={handleInputChange}
                 />
-                {error.name && <p>{error.name}</p>}
+                {error.email && <p>{error.email}</p>}
                 <span className={styles.placeholder}>Email</span>
               </div>
             </div>
