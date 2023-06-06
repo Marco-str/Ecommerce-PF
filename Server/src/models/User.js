@@ -10,6 +10,11 @@ module.exports= (sequelize)=> {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        userName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+        },
         phone: {
             type: DataTypes.BIGINT,
 

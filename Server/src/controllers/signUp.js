@@ -1,17 +1,17 @@
 const { User } = require("../db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = process.env;
+const { JWT_SIGN } = process.env;
 
 
 
 
 const signUp = async (req, res) => {
 try{
-    const {name, phone, email, password, admin} = req.body;
+    const {name, userName, phone, email, password, admin} = req.body;
 
     const emailExist = await User.findOne({where: {email: email}});
-    if(!email || !password || !name || !phone){
+    if(!email || !password || !name || !phone || !userName){
         return res.status(400).json({msg: "PLease, all fill are required"});
     }
     if(emailExist){
@@ -21,11 +21,10 @@ try{
 ;
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = await User.create({name, phone, email, password: hashedPassword});
-console.log(newUser);
-    const token = jwt.sign({id: newUser.id, name: newUser.name, email: newUser.email}, `${JWT_SECRET}`);
+    const newUser = await User.create({name, phone, email, password: hashedPassword, userName});
 
-    // res.status(200).json({msg: newUser});
+    const token = jwt.sign({id: newUser.id, name: newUser.name,userName: newUser.userName, email: newUser.email}, `${JWT_SIGN}`);
+
     res.status(200).json({token});
 
 

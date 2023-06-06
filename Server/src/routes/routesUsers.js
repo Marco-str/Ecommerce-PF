@@ -4,6 +4,11 @@ const  getAllUsers  = require("../controllers/getUsers");
 
 
 const signUp = require("../controllers/signUp");
+const login = require("../controllers/login");
+const protected = require("../controllers/protected");
+const verifyToken = require("../middelware/verifyToken");
+const jwt = require("jsonwebtoken");
+const {JWT_SIGN} = process.env;
 
 
 
@@ -21,9 +26,9 @@ router.get("/", async (req, res) => {
 
 router.post("/signup", signUp);
 
-router.post("/login")
+router.post("/login", login)
 
-router.get("/protected")
+router.get("/protected", verifyToken, protected)
 
 
 
