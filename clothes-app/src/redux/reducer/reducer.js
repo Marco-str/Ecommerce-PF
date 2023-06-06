@@ -1,9 +1,10 @@
-import { GET_ALL_PRODUCTS, FILTER_BY_CATEGORY, FILTER_BY_PRICE, FILTER_BY_COLOR, RESET_FILTERS, GET_DETAIL } from "../actions/actions";
+import { GET_ALL_PRODUCTS, FILTER_BY_CATEGORY, FILTER_BY_PRICE, FILTER_BY_COLOR, RESET_FILTERS, GET_DETAIL , GET_USER} from "../actions/actions";
 
 const initialState = {
   products: [],
   allProducts: [],
   productDetail: {},
+  user: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -83,6 +84,12 @@ const rootReducer = (state = initialState, action) => {
       ...state,
       productDetail: action.payload,
     }
+
+    case GET_USER:
+      return{
+        ...state,
+        user: action.payload
+      }
     default:
       return state;
   }
