@@ -23,7 +23,32 @@ export default function CreatePost() {
     image: "",
     category: "",
     description: "",
-    stock: [{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}},{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}} ]
+    stock: [
+      {
+        ColorName: "",
+        Sizes: {
+          stockXXS: "",
+          stockXS: "",
+          stockS: "",
+          stockM: "",
+          stockL: "",
+          stockXL: "",
+          stockXXL: "",
+        },
+      },
+      {
+        ColorName: "",
+        Sizes: {
+          stockXXS: "",
+          stockXS: "",
+          stockS: "",
+          stockM: "",
+          stockL: "",
+          stockXL: "",
+          stockXXL: "",
+        },
+      },
+    ],
   });
   const [input, setInput] = useState({
     name: "",
@@ -32,20 +57,39 @@ export default function CreatePost() {
     image: "",
     category: "",
     description: "",
-    stock: [{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}},{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}} ]
+    stock: [
+      {
+        ColorName: "",
+        Sizes: {
+          stockXXS: "",
+          stockXS: "",
+          stockS: "",
+          stockM: "",
+          stockL: "",
+          stockXL: "",
+          stockXXL: "",
+        },
+      },
+      {
+        ColorName: "",
+        Sizes: {
+          stockXXS: "",
+          stockXS: "",
+          stockS: "",
+          stockM: "",
+          stockL: "",
+          stockXL: "",
+          stockXXL: "",
+        },
+      },
+    ],
   });
   const handleInputChange = (e) => {
     setInput({
       ...input,
-      [e.target.name]: e.target.value,  //VER si esta guardando todo bien
+      [e.target.name]: e.target.value, //VER si esta guardando todo bien
     });
-
-    setError(
-      validate({
-        ...input,
-        [e.target.name]: e.target.value,
-      })
-    );
+    setError(validate({ ...input, [e.target.name]: e.target.value }));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,7 +101,32 @@ export default function CreatePost() {
       image: "",
       category: "",
       description: "",
-      stock: [{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}},{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}} ]
+      stock: [
+        {
+          ColorName: "",
+          Sizes: {
+            stockXXS: "",
+            stockXS: "",
+            stockS: "",
+            stockM: "",
+            stockL: "",
+            stockXL: "",
+            stockXXL: "",
+          },
+        },
+        {
+          ColorName: "",
+          Sizes: {
+            stockXXS: "",
+            stockXS: "",
+            stockS: "",
+            stockM: "",
+            stockL: "",
+            stockXL: "",
+            stockXXL: "",
+          },
+        },
+      ],
     });
     setError({
       name: "",
@@ -66,14 +135,39 @@ export default function CreatePost() {
       image: "",
       category: "",
       description: "",
-      stock: [{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}},{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}} ]
+      stock: [
+        {
+          ColorName: "",
+          Sizes: {
+            stockXXS: "",
+            stockXS: "",
+            stockS: "",
+            stockM: "",
+            stockL: "",
+            stockXL: "",
+            stockXXL: "",
+          },
+        },
+        {
+          ColorName: "",
+          Sizes: {
+            stockXXS: "",
+            stockXS: "",
+            stockS: "",
+            stockM: "",
+            stockL: "",
+            stockXL: "",
+            stockXXL: "",
+          },
+        },
+      ],
     });
     e.target.reset();
-    alert("Post created!");//esto deberia aparecer mas adelante cuando se guardo en la db
-  };
+    alert("Post created!");
+  }; //esto deberia aparecer mas adelante cuando se guardo en la db
   const handleCategoriesChange = (event) => {
     const selectedCategory = event.target.value;
-    const checkboxes = document.querySelectorAll('.luchi');
+    const checkboxes = document.querySelectorAll(".luchi");
     //Desmarca todas las casillas
     checkboxes.forEach((checkbox) => {
       checkbox.checked = false;
@@ -94,41 +188,40 @@ export default function CreatePost() {
   //         selectedCategories.splice(index, 1);
   //       }
   //     }
-  //     setInput({ ...input, category: selectedCategories });
-  //   }
+  //     setInput({ ...input, category: selectedCategories })}
   return (
     <div className={styles.body}>
+      {" "}
       <form onSubmit={(e) => handleSubmit(e)}>
+        {" "}
         <div className={styles.nav}>
-          <h1>Publicate</h1>
-          <button className={styles.button}>Create</button>
+          {" "}
+          <h1>Publicate</h1> <button className={styles.button}>Create</button>
           <Link to="/">
-            <button className={styles.button}>Back</button>
-          </Link>
+            {" "}
+            <button className={styles.button}>Back</button>{" "}
+          </Link>{" "}
         </div>
-
         <div className={styles.statsAndTypes}>
+          {" "}
           <div className={styles.stats}>
+            {" "}
             <h3>Characteristics</h3>
-
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
                   type="text"
                   name="name"
                   id="input-text"
-                  required
                   spellCheck="false"
                   value={input.name}
                   onChange={handleInputChange}
-                />
-                {error.name && <p>{error.name}</p>}
+                />{" "}
+                {error.name && <p>{error.name}</p>}{" "}
                 <span className={styles.placeholder}>Name</span>
-              </div>
+              </div>{" "}
             </div>
-
             {/* colors: [{ColorName: "", Sizes :[{ SizeName:''}]}], */}
-
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
@@ -143,7 +236,6 @@ export default function CreatePost() {
                 <span className={styles.placeholder}>Color 1</span>
               </div>
             </div>
-
             <div className={styles.size}>
               <h7>Sizes color 1</h7>
               <div className={styles.typesOrder}>
@@ -160,8 +252,10 @@ export default function CreatePost() {
                         <label htmlFor={e}>{e}</label>
                         {stock.map((stock) => (
                           <div>
-                            <input type="number" id={`${stock}${e}`} 
-                            // value={input.color[0].SizeName[0].stock} 
+                            <input
+                              type="number"
+                              id={`${stock}${e}`}
+                              // value={input.color[0].SizeName[0].stock}
                             />
                             <label htmlFor={stock}>{stock}</label>
                           </div>
@@ -172,7 +266,6 @@ export default function CreatePost() {
                 ))}
               </div>
             </div>
-
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
@@ -187,7 +280,6 @@ export default function CreatePost() {
                 <span className={styles.placeholder}>Color 2</span>
               </div>
             </div>
-
             <div className={styles.size}>
               <h7>Sizes color 2</h7>
 
@@ -210,8 +302,8 @@ export default function CreatePost() {
                 ))}
               </div>
             </div>
-
             <div className={styles.centralize}>
+              {" "}
               <div className={styles.inputBlock}>
                 <input
                   type="number"
@@ -224,7 +316,6 @@ export default function CreatePost() {
                 <span className={styles.placeholder}>Price</span>
               </div>
             </div>
-
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
@@ -240,7 +331,6 @@ export default function CreatePost() {
                 <span className={styles.placeholder}>Image Link: </span>
               </div>
             </div>
-
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
@@ -256,7 +346,6 @@ export default function CreatePost() {
               </div>
             </div>
           </div>
-
           <div className={styles.types}>
             <h3>Categories</h3>
             <div className={styles.typesOrder}>
@@ -265,7 +354,7 @@ export default function CreatePost() {
                   <ul className={styles.ksCboxtags}>
                     <li>
                       <input
-                      className="luchi"
+                        className="luchi"
                         onChange={handleCategoriesChange}
                         type="checkbox"
                         id={e}
