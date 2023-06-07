@@ -1,7 +1,7 @@
 const { User } = require("../db");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = process.env;
+const { JWT_SIGN } = process.env;
 
 
 const login = async (req, res) => {
@@ -18,7 +18,7 @@ const login = async (req, res) => {
             return res.status(400).json({msg: "EL nombre de usuario o la contraseña are incorrect"});
         }
 
-        const token = jwt.sign({id: user.id, userName: user.userName}, `${JWT_SECRET}`);
+        const token = jwt.sign({ userName: user.userName }, `${JWT_SIGN}`);
     
         res.json({token, user});
     
