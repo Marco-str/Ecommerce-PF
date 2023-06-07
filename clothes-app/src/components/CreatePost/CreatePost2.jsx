@@ -1,48 +1,52 @@
-// import styles from "./CreatePost.module.css";
-
-// export default function CreatePost() {
-
-// }
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { validate } from "./validator.js";
 import { createPost, getAllProducts } from "../../redux/actions/actions";
 import styles from "./CreatePost.module.css";
+
+
+
 export default function CreatePost() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
+
+  // Obtenemos todas las categorías únicas de los productos
   const uniqueCategories = Array.from(
     new Set(products.map((product) => product.category))
   );
   const [categories, setCategories] = useState(uniqueCategories);
-  const sizes = ["XXS", "XS", "S", "M", "L", "XL", "XXL"];
-  const stock = sizes.map((el) => `stock ${el}:`);
+
+  const sizes= ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL'];
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
+
   const [error, setError] = useState({
     name: "",
-    color: [], // colors: [{ColorName: "", Sizes :[{ SizeName:''}]}],
+    colors: [],
+    // colors: [{ColorName: "", Sizes :[{ SizeName:''}]}],
     price: "",
     image: "",
-    category: "",
+    category: [],
     description: "",
-    stock: [{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}},{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}} ]
   });
+
   const [input, setInput] = useState({
     name: "",
-    color: [],
+    colors: [],
+    // colors: [{ColorName: "", Sizes :[{ SizeName:''}]}],
     price: "",
     image: "",
-    category: "",
+    category: [],
     description: "",
-    stock: [{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}},{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}} ]
   });
+
   const handleInputChange = (e) => {
     setInput({
       ...input,
-      [e.target.name]: e.target.value,  //VER si esta guardando todo bien
+      [e.target.name]: e.target.value,
     });
 
     setError(
@@ -52,55 +56,82 @@ export default function CreatePost() {
       })
     );
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (input.category.length > 1) {
+      return alert("Choose only one category");
+    }
+
+    if (input.category.length === 0) {
+      return alert("Select a category");
+    }
+
     dispatch(createPost(input));
+
     setInput({
       name: "",
-      color: [],
+      colors: [],
+      // colors: [{ColorName: "", Sizes :[{ SizeName:''}]}],
       price: "",
       image: "",
-      category: "",
+      category: [],
       description: "",
-      stock: [{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}},{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}} ]
     });
+
     setError({
       name: "",
-      color: [],
+      colors: [],
+      // colors: [{ColorName: "", Sizes :[{ SizeName:''}]}],
       price: "",
       image: "",
-      category: "",
+      category: [],
       description: "",
-      stock: [{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}},{ColorName: "", Sizes: {stockXXS: "", stockXS:"", stockS:"", stockM:"", stockL:"", stockXL:"", stockXXL:""}} ]
     });
+
     e.target.reset();
-    alert("Post created!");//esto deberia aparecer mas adelante cuando se guardo en la db
+
+    alert("Post created!");
   };
-  const handleCategoriesChange = (event) => {
-    const selectedCategory = event.target.value;
-    const checkboxes = document.querySelectorAll('.luchi');
-    //Desmarca todas las casillas
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
-    //Marca la casilla
-    event.target.checked = true;
-    setInput({ ...input, category: selectedCategory });
+
+  const handleCategoriesChange = (e) => {
+    const selectedCategories = [...input.category];
+
+    if (e.target.checked) {
+      if (!selectedCategories.includes(e.target.value)) {
+        selectedCategories.push(e.target.value);
+      }
+    } else {
+      const index = selectedCategories.indexOf(e.target.value);
+      if (index > -1) {
+        selectedCategories.splice(index, 1);
+      }
+    }
+
+    setInput({ ...input, category: selectedCategories });
   };
-  //   const handleSizesChange = (e) => {
-  //     const selectedSizes = [...input.colors[index].Sizes];
-  //     if (e.target.checked) {
-  //       if (!selectedCategories.includes(e.target.value)) {
-  //         selectedCategories.push(e.target.value);
-  //       }
-  //     } else {
-  //       const index = selectedCategories.indexOf(e.target.value);
-  //       if (index > -1) {
-  //         selectedCategories.splice(index, 1);
-  //       }
-  //     }
-  //     setInput({ ...input, category: selectedCategories });
-  //   }
+
+
+
+  const handleSizesChange = (e) => {
+    const selectedSizes = [...input.colors[index].Sizes];
+
+    if (e.target.checked) {
+      if (!selectedCategories.includes(e.target.value)) {
+        selectedCategories.push(e.target.value);
+      }
+    } else {
+      const index = selectedCategories.indexOf(e.target.value);
+      if (index > -1) {
+        selectedCategories.splice(index, 1);
+      }
+    }
+
+    setInput({ ...input, category: selectedCategories });
+
+  }
+
   return (
     <div className={styles.body}>
       <form onSubmit={(e) => handleSubmit(e)}>
@@ -113,6 +144,7 @@ export default function CreatePost() {
         </div>
 
         <div className={styles.statsAndTypes}>
+
           <div className={styles.stats}>
             <h3>Characteristics</h3>
 
@@ -132,6 +164,7 @@ export default function CreatePost() {
               </div>
             </div>
 
+
             {/* colors: [{ColorName: "", Sizes :[{ SizeName:''}]}], */}
 
             <div className={styles.centralize}>
@@ -150,33 +183,25 @@ export default function CreatePost() {
             </div>
 
             <div className={styles.size}>
-              <h7>Sizes color 1</h7>
-              <div className={styles.typesOrder}>
-                {sizes.map((e) => (
-                  <div className={styles.container}>
-                    <ul className={styles.ksCboxtags}>
-                      <li>
-                        <input
-                          // onChange={handleSizesChange}
-                          type="checkbox"
-                          id={e}
-                          value={e}
-                        />
-                        <label htmlFor={e}>{e}</label>
-                        {stock.map((stock) => (
-                          <div>
-                            <input type="number" id={`${stock}${e}`} 
-                            // value={input.color[0].SizeName[0].stock} 
-                            />
-                            <label htmlFor={stock}>{stock}</label>
-                          </div>
-                        ))}
-                      </li>
-                    </ul>
-                  </div>
-                ))}
-              </div>
+            <h7>Sizes color 1</h7>
+            <div className={styles.typesOrder}>
+              {sizes.map((e) => (
+                <div className={styles.container}>
+                  <ul className={styles.ksCboxtags}>
+                    <li>
+                      <input
+                        onChange={handleSizesChange}
+                        type="checkbox"
+                        id={`checkbox${e}`}
+                        value={e}
+                      />
+                      <label htmlFor={`checkbox${e}`}>{e}</label>
+                    </li>
+                  </ul>
+                </div>
+              ))}
             </div>
+          </div>
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
@@ -194,27 +219,25 @@ export default function CreatePost() {
             </div>
 
             <div className={styles.size}>
-              <h7>Sizes color 2</h7>
-
-              <div className={styles.typesOrder}>
-                {sizes.map((e) => (
-                  <div className={styles.container}>
-                    <ul className={styles.ksCboxtags}>
-                      <li>
-                        <input
-                          // onChange={handleSizesChange}
-                          type="checkbox"
-                          id={e}
-                          value={e}
-                        />
-
-                        <label htmlFor={e}>{e}</label>
-                      </li>
-                    </ul>
-                  </div>
-                ))}
-              </div>
+            <h7>Sizes color 2</h7>
+            <div className={styles.typesOrder}>
+              {sizes.map((e) => (
+                <div className={styles.container}>
+                  <ul className={styles.ksCboxtags}>
+                    <li>
+                      <input
+                        onChange={handleSizesChange}
+                        type="checkbox"
+                        id={`checkbox${e}`}
+                        value={e}
+                      />
+                      <label htmlFor={`checkbox${e}`}>{e}</label>
+                    </li>
+                  </ul>
+                </div>
+              ))}
             </div>
+          </div>
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
@@ -223,12 +246,13 @@ export default function CreatePost() {
                   name="price"
                   id="input-text"
                   spellCheck="false"
-                  value={input.price}
+                  value={input.defense}
                   onChange={handleInputChange}
                 />
                 <span className={styles.placeholder}>Price</span>
               </div>
             </div>
+
 
             <div className={styles.centralize}>
               <div className={styles.inputBlock}>
@@ -245,8 +269,9 @@ export default function CreatePost() {
                 <span className={styles.placeholder}>Image Link: </span>
               </div>
             </div>
+          
 
-            <div className={styles.centralize}>
+          <div className={styles.centralize}>
               <div className={styles.inputBlock}>
                 <input
                   type="text"
@@ -260,8 +285,10 @@ export default function CreatePost() {
                 <span className={styles.placeholder}>Description</span>
               </div>
             </div>
+            
           </div>
-
+          
+          
           <div className={styles.types}>
             <h3>Categories</h3>
             <div className={styles.typesOrder}>
@@ -270,21 +297,57 @@ export default function CreatePost() {
                   <ul className={styles.ksCboxtags}>
                     <li>
                       <input
-                      className="luchi"
                         onChange={handleCategoriesChange}
                         type="checkbox"
-                        id={e}
+                        id={`checkbox${e}`}
                         value={e}
                       />
-                      <label htmlFor={e}>{e}</label>
+                      <label htmlFor={`checkbox${e}`}>{e}</label>
                     </li>
                   </ul>
                 </div>
               ))}
             </div>
           </div>
+          
         </div>
+        
       </form>
     </div>
   );
 }
+
+
+
+
+///////
+
+// const createPost = async (req, res) => {
+//   try {
+//     const {   name, color1, color2, SizesColor1, SizesColor2, price, image, category, description } = req.body;
+//     const findClothe = await Clothes.findOne({
+//       where: { name: name.toLowerCase() },//ver esto de lowerCase
+//     });//Solo se fija si existe entre los creados
+//     if (findPokemon) {
+//       res.status(400).send("User already exists");
+//     } else {
+//       let newPokemon = await Pokemon.create({
+//         name: name.toLowerCase(),
+//         image: image,
+//         hp: hp,
+//         attack: attack,
+//         defense: defense,
+//         speed: speed,
+//         height: height,
+//         weight: weight,
+//       });
+//       let pokemonType = await Type.findAll({
+//         where: {
+//           name: types,
+//         },
+//       });
+//       await newPokemon.addTypes(pokemonType);
+//       res.status(200).send("Pokemon Created")
+//     }
+//   } catch (error) {
+//     console.log(error)}};
