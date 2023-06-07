@@ -4,7 +4,7 @@ require('dotenv').config();
 require("./src/db.js");
 const  PORT = process.env.PORT || 3001;
 
-conn.sync({ force: true })
+conn.sync({ force: false })
 .then(() => {
 server.listen(PORT, () => {    
     console.log("Conectado a la base de datos");    
