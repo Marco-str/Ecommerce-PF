@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const Nav = () => {
   const user = useSelector((state) => state.user);
   const [isLoggedIn, setIsLoggedIn] = useState(!!user);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   const handleLogout = () => {
     setIsLoggedIn(false);
