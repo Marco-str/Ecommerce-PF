@@ -1,0 +1,138 @@
+/* body {
+  background-image: url("../../assets/pika.gif");
+} */
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    background-color: #393d4446;
+    border-radius: 10px;
+    padding: 40px;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #cca0cc;
+    margin-bottom: 20px;
+  }
+  
+  h1:hover {
+    animation: aparecer 2s infinite step-end;
+  }
+  
+  .statsAndTypes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #cca0cc;
+  }
+  
+  .stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #393d4446;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .types {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    height: 50px;
+    padding: 1.5em 3.5em;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #cca0cc;
+    background-color: #1d1f24;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    animation: aparecer 2s ease-in 1;
+    animation-delay: 3s;
+  }
+  
+  .button:hover {
+    background-color: #8a1d8a;
+    box-shadow: 0px 15px 20px #8a1d8a;
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .button:active {
+    transform: translateY(-1px);
+  }
+  
+  .inputBlock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .inputBlock input {
+    font-weight: 500;
+    width: 400px;
+    height: 1px;
+    padding: 15px 20px;
+    border-radius: 1rem;
+    border: 0.01rem solid #adadad;
+    background-color: #4e4c4c;
+    color: #24211d;
+  }
+  
+  .inputBlock span.placeholder {
+    position: absolute;
+    margin: 5px 0;
+    padding: 0 5px;
+    color: #b4b2b2;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 17px;
+    transition: all 0.2s;
+    transform-origin: 0% 0%;
+    pointer-events: none;
+  }
+  
+  .inputBlock input:valid + span.placeholder,
+  .inputBlock input:focus + span.placeholder {
+    transform: scale(0.8) translateY(-30px);
+    background: #2c2c2c;
+  }
+  
+  .inputBlock input:focus {
+    color: #cca0cc;
+    border-color: #000;
+  }
+  
+  .inputBlock input:focus + span.placeholder {
+    color: #cca0cc;
+  }

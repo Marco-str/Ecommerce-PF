@@ -1,0 +1,48 @@
+.centralize {
+	width: 210px;
+	display: flex;
+	margin-top: 20px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3%;
+}
+
+div.inputBlock {
+	position: relative;
+	width: 10%;
+	margin-bottom: 3%;
+	
+}
+
+div.inputBlock input {
+	font-weight: 500;
+	font-size: 1rem;
+	color: #b9b7b7;
+	width: 700px;
+	height: 10px;
+	padding: 15px 15px;
+	border-radius: 1rem;
+	border: 0.01rem solid  #c0c0c0;
+	outline:none;
+	background-color: #f1f1f1;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	
+}
+div.inputBlock span.placeholder {
+	height: 45px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #696969;
+	border-radius: 6%;
+	position: absolute;
+	margin: 12px 0;
+	padding: 0 5px;
+	display: flex;
+	align-items: center;
+	top: -12px;
+	left: 17px;
+
+}
+

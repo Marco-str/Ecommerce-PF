@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background-image: linear-gradient(to bottom, rgb(234, 234, 234), #a4a4a4);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.previousPage {
+  width: 55px;
+  border-radius: 5px;
+  background-color: #a2a2a2;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.323);
+}
+.previousPage:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.651);
+  transition: 0.2s;
+}
+.nextPage {
+  width: 55px;
+  border-radius: 5px;
+  background-color: #a2a2a2;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.323);
+}
+
+.nextPage:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.651);
+  transition: 0.2s;
+}
+
+.input {
+  width: 25px;
+  font-size: 20px;
+  padding: 5px 25px;
+  border: 1px solid #4a4a4a;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.p {
+  font-size: 20px;
+}
