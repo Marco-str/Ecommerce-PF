@@ -4,10 +4,11 @@ import {
   filterByCategory,
   filterByPrice,
   resetFilters,
+  orderByPrice,
 } from "../../redux/actions/actions";
 import styles from "./Filters.module.css";
 
-const Filters = () => {
+const Filters = ({setprice}) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -15,16 +16,10 @@ const Filters = () => {
   const [priceRange, setPriceRange] = useState([0, 1000]);
 
   useEffect(() => {
-    // Obtener las categorías únicas de los productos
     const categories = products.map((product) => product.category);
     const uniqueCategories = Array.from(new Set(categories));
     setUniqueCategories(uniqueCategories);
   }, [products]);
-
-  // const newUniqueCategories = uniqueCategories.map((item) => {
-  //   const newString = item.replace(/_/g, " ");
-  //   return newString.charAt(0).toUpperCase() + newString.slice(1);
-  // });
 
   const handleResetFilter = () => {
     setSelectedCategory("");
@@ -52,26 +47,43 @@ const Filters = () => {
     dispatch(filterByPrice(priceRange));
   };
 
+  function handleOderByPrice(e) {
+    dispatch(orderByPrice(e.target.value));
+    setprice(e.target.value)
+  }
+
   return (
     <div className={styles["filter-container"]}>
       <div className={styles["filter-section"]}>
-        <h4 className={styles["h4"]}> Categories</h4>
+        <h4 className={styles["categories"]}>Categories</h4>
         <select
           className={styles["select"]}
           value={selectedCategory}
           onChange={handleCategoryChange}
         >
-          <option value="">All</option>
-          {uniqueCategories.map((category) => (
-            <option value={category} key={category}>
-              {category}
-            </option>
-          ))}
+          <option className={styles["all"]} value="">
+            All categories
+          </option>
+          {uniqueCategories.map((category) => {
+            const newString = category.replace(/_/g, " ");
+            const transformedCategory =
+              newString.charAt(0).toUpperCase() + newString.slice(1);
+            return (
+              <option
+                className={styles["category"]}
+                value={category}
+                key={category}
+              >
+                {transformedCategory}
+              </option>
+            );
+          })}
         </select>
       </div>
       <div className={styles["filter-section"]}>
-        <h4 className={styles["h4"]}>Price Range</h4>
         <div className={styles["price-input"]}>
+          <h4 className={styles["priceRange"]}>Price Range</h4>
+          <span className={styles["span"]}>From:</span>
           <input
             type="number"
             className={styles["input"]}
@@ -81,8 +93,7 @@ const Filters = () => {
             max={priceRange[1]}
             key="minPrice"
           />
-          <span>$</span>
-          <span> - </span>
+          <span className={styles["span"]}>Up to:</span>
           <input
             className={styles["input"]}
             type="number"
@@ -92,14 +103,24 @@ const Filters = () => {
             max={1000}
             key="maxPrice"
           />
-          <span>$</span>
           <button className={styles["button"]} onClick={handleFilterByPrice}>
             Apply
           </button>
         </div>
       </div>
+
+
+      {/* --------------------------------------------------------------- */}
+
+
+      <select onChange={handleOderByPrice} name="price" id="price">
+        <option value="asc">Lower</option>
+        <option value="des">Higher</option>
+      </select>
+
+      {/* --------------------------------------------------------------- */}
       <div className={styles["filter-section"]}>
-        <button className={styles["button"]} onClick={handleResetFilter}>
+        <button className={styles["restFiltros"]} onClick={handleResetFilter}>
           Reset Filters
         </button>
       </div>

@@ -3,7 +3,7 @@
 } */
 
 
-.nav {
+/* .nav {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,7 +23,7 @@
   
   h1:hover{animation: aparecer 2s infinite step-end}
 
-  /* 
+  
 .nav{
     display: flex;
     flex-direction: row;
@@ -32,7 +32,7 @@
     background-color: #191a1d;
     color: #ffffffec;
 
-} */
+}
 
 h1 { animation: aparecer 1s ease-in 1;
     animation-delay: 2s;
@@ -80,7 +80,7 @@ h1 { animation: aparecer 1s ease-in 1;
     height: 100%;
     background-color: #393d4446;
     border-radius: 10px;
-    /* border: 1px solid green; */
+    border: 1px solid green;
     margin-left: -15%;
     padding-right: 1%;
     padding-left: 1%;
@@ -95,7 +95,7 @@ h1 { animation: aparecer 1s ease-in 1;
     
 }
 
-/* Buttons */
+Buttons
 
 .button {
     height: 45px;
@@ -127,7 +127,7 @@ h1 { animation: aparecer 1s ease-in 1;
     transform: translateY(-1px);
 }
 
-/* input creates */
+input creates
 
 .centralize {
     display: flex;
@@ -184,7 +184,7 @@ div.inputBlock input:focus + span.placeholder {
 color: #cca0cc;
 }
 
-/* Types buttons */
+Types buttons
 
 .container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -259,4 +259,4 @@ ul.ksCboxtags li input[type="checkbox"] {
 ul.ksCboxtags li input[type="checkbox"] {
     position: absolute;
     opacity: 0;
-}
+} */

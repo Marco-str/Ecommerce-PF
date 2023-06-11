@@ -1,45 +1,11 @@
-div.centralize {
+.centralize {
 	width: 210px;
 	display: flex;
+	margin-top: 20px;
 	justify-content: center;
 	align-items: center;
-	/* background-color: #252525; */
-	margin-right: 1%;
-	animation: aparecer 1s ease-in 1;
-	animation-delay: 2s;
-	margin-top: 3%;
 	border-radius: 3%;
 }
-
-
-@keyframes shakeY {
-	0%, 100% {
-	  transform: translateY(0);
-	}
-	25%, 75% {
-	  transform: translateY(-10px);
-	}
-	50% {
-	  transform: translateY(10px);
-	}
-  }
-
-div.centralize:hover{
-	animation: shakeY 1s 1;
-}
-
-@keyframes aparecer {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(3deg); }
-    15% { transform: rotate(0deg); }
-    20% { transform: rotate(3deg); }
-    25% { transform: rotate(0deg); }
-    30% { transform: rotate(3deg); }
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(-3deg); }
-    100% { transform: rotate(0deg); }
-}
-
 
 div.inputBlock {
 	position: relative;
@@ -51,14 +17,15 @@ div.inputBlock {
 div.inputBlock input {
 	font-weight: 500;
 	font-size: 1rem;
-	color: #8a1d8a;
-	width: 10em;
+	color: #b9b7b7;
+	width: 700px;
 	height: 10px;
 	padding: 15px 15px;
 	border-radius: 1rem;
-	border: 0.01rem solid  #8a1d8a;
+	border: 0.01rem solid  #c0c0c0;
 	outline:none;
-	background-color: #252525;
+	background-color: #f1f1f1;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	
 }
 div.inputBlock span.placeholder {
@@ -67,7 +34,7 @@ div.inputBlock span.placeholder {
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: #8a1d8a;
+    color: #696969;
 	border-radius: 6%;
 	position: absolute;
 	margin: 12px 0;
@@ -76,37 +43,6 @@ div.inputBlock span.placeholder {
 	align-items: center;
 	top: -12px;
 	left: 17px;
-	transition: all 0.2s;
-	transform-origin: 0% 0%;
-	background: none;
-	pointer-events: none;
-	animation-name: animacion;
-	animation-duration: 4s;
-	animation-delay: 0s; /* Retardo antes de la primera repetición */
-	animation-iteration-count: infinite; /* Número de repeticiones */
-	animation-play-state: running; /* Estado de la animación: "running" (ejecutándose) */
-	animation-delay: 5s; /* Retardo para la siguiente repetición */
 
-}
-
-@keyframes animacion {
-	50% {color: #8a1d8a;}
-	100% {color: rgb(255, 255, 255);}
-  }
-
-div.inputBlock input:valid + span.placeholder,
-div.inputBlock input:focus + span.placeholder {
-transform: scale(0.8) translateY(-30px);
-background: #252525;
-color:#fff
-}
-div.inputBlock input:focus{
-color: #8a1d8a;
-border-color: #8a1d8a;
-background: #252525;
-}
-div.inputBlock input:focus + span.placeholder {
-color: #8a1d8a;
-background: #252525;
 }
 

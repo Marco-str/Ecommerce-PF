@@ -15,6 +15,7 @@ export default function CreatePost() {
   const uniqueCategories = Array.from(
     new Set(products.map((product) => product.category))
   );
+  // eslint-disable-next-line
   const [categories, setCategories] = useState(uniqueCategories);
 
   useEffect(() => {

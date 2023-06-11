@@ -1,46 +1,34 @@
+
+
 .mainContainer {
   display: flex;
-  flex-direction: row;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
-  height: 85px;
-  background-color: rgb(150, 82, 177);
+  background-color: rgb(252, 218, 255);
+  padding: 60px 50px 40px 50px;
+  max-height: 10px;
 }
 
-
-
-
-
-
-
 .link {
+  display: flex;
   color: black;
   text-decoration: none;
-  margin: 1.5%;
+  font-size: 10px;
 }
 
 .link:hover {
   cursor: pointer;
-  font-stretch: 7;
-  text-decoration: underline;
   text-shadow: 1px 1px 2px #0000005d;
+  transition: 0.2s;
 }
-
 
 .title {
+  font-size: 20px;
   cursor: pointer;
-  color: #0a040a;
-  margin-left: 1%;
-  animation-name: aparecer;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  animation-delay: 2s;
-  animation-fill-mode: both;
-  
+  color: rgb(41, 41, 41);
 }
 
-.button{
+.button {
   padding: 8px 20px;
   margin: 10px;
   font-size: 15px;
@@ -50,4 +38,93 @@
   border-radius: 4px;
   cursor: pointer;
   margin-top: 8px;
+}
+
+.titleEspecial {
+  font-family: 'Prata', serif;
+  font-size: 50px;
+  margin-left: 30px;
+  color: rgba(41, 41, 41, 0.844);
+}
+
+.loginSing{
+  display: flex;
+  margin-right: 30px;
+}
+
+.titleLogin{
+  margin: 45px;
+  color: rgba(41, 41, 41, 0.844);
+}.mainContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(252, 218, 255);
+  padding: 60px 50px 40px 50px;
+  max-height: 10px;
+}
+
+.link {
+  display: flex;
+  color: black;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+.link:hover {
+  cursor: pointer;
+  text-shadow: 1px 1px 2px #0000005d;
+  transition: 0.2s;
+}
+
+.title {
+  font-size: 20px;
+  cursor: pointer;
+  color: rgb(41, 41, 41);
+}
+
+.button {
+  padding: 8px 20px;
+  margin: 10px;
+  font-size: 15px;
+  background-color: #8a1d8a;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.titleEspecial {
+  font-family: 'Prata', serif;
+  font-size: 50px;
+  margin-left: 30px;
+  color: rgba(41, 41, 41, 0.844);
+}
+
+.loginSing {
+  display: flex;
+  margin-right: 30px;
+  align-items: center; /* Agregado para centrar verticalmente los elementos */
+}
+
+.titleLogin {
+  margin: 45px;
+  color: rgba(41, 41, 41, 0.844);
+}
+
+.logoutButton {
+  /* Estilos para el botón de Log out */
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  color: rgba(41, 41, 41, 0.844);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.logoutButton:hover {
+  text-decoration: underline;
+  text-shadow: none;
 }

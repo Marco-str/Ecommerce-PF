@@ -14,7 +14,7 @@ server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
 server.use((req, res, next) => {
   //middleware para dejar pasar las solicitudes de cualquiera
-  res.header("Access-Control-Allow-Origin", `http://localhost:3000`);
+  res.header("Access-Control-Allow-Origin", `*`);
 
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
