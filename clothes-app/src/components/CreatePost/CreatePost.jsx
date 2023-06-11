@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { validate } from "./validator.js";
-import { createPost } from "../../redux/actions/actions";
+import { createPost, getAllProducts } from "../../redux/actions/actions";
 import styles from "./CreatePost.module.css";
-import { getAllProducts } from "../../redux/actions/actions";
+
 
 
 export default function CreatePost() {
@@ -15,6 +15,7 @@ export default function CreatePost() {
   const uniqueCategories = Array.from(
     new Set(products.map((product) => product.category))
   );
+  // eslint-disable-next-line
   const [categories, setCategories] = useState(uniqueCategories);
 
   useEffect(() => {
@@ -232,3 +233,38 @@ export default function CreatePost() {
     </div>
   );
 }
+
+
+
+
+///////
+
+// const createPost = async (req, res) => {
+//   try {
+//     const {   name, color, price, image, category, description } = req.body;
+//     const findClothe = await Clothes.findOne({
+//       where: { name: name.toLowerCase() },//ver esto de lowerCase
+//     });//Solo se fija si existe entre los creados
+//     if (findPokemon) {
+//       res.status(400).send("User already exists");
+//     } else {
+//       let newPokemon = await Pokemon.create({
+//         name: name.toLowerCase(),
+//         image: image,
+//         hp: hp,
+//         attack: attack,
+//         defense: defense,
+//         speed: speed,
+//         height: height,
+//         weight: weight,
+//       });
+//       let pokemonType = await Type.findAll({
+//         where: {
+//           name: types,
+//         },
+//       });
+//       await newPokemon.addTypes(pokemonType);
+//       res.status(200).send("Pokemon Created")
+//     }
+//   } catch (error) {
+//     console.log(error)}};

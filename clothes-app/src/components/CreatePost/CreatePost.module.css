@@ -3,13 +3,13 @@
 } */
 
 
-.nav {
+/* .nav {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
     cursor: pointer;
-    color: #8a1d8a;
+    color: #cca0cc;
     margin-left: 1%;
     
     
@@ -23,7 +23,7 @@
   
   h1:hover{animation: aparecer 2s infinite step-end}
 
-  /* 
+  
 .nav{
     display: flex;
     flex-direction: row;
@@ -32,7 +32,7 @@
     background-color: #191a1d;
     color: #ffffffec;
 
-} */
+}
 
 h1 { animation: aparecer 1s ease-in 1;
     animation-delay: 2s;
@@ -46,7 +46,7 @@ h1 { animation: aparecer 1s ease-in 1;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    color: #8a1d8a;
+    color: #cca0cc;
     margin-top: 0;
     margin: 3%;
 }
@@ -80,7 +80,7 @@ h1 { animation: aparecer 1s ease-in 1;
     height: 100%;
     background-color: #393d4446;
     border-radius: 10px;
-    /* border: 1px solid green; */
+    border: 1px solid green;
     margin-left: -15%;
     padding-right: 1%;
     padding-left: 1%;
@@ -95,7 +95,7 @@ h1 { animation: aparecer 1s ease-in 1;
     
 }
 
-/* Buttons */
+Buttons
 
 .button {
     height: 45px;
@@ -104,7 +104,7 @@ h1 { animation: aparecer 1s ease-in 1;
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: #660a52;
+    color: #cca0cc;
     background-color: #1d1f24;
     border: none;
     border-radius: 45px;
@@ -127,7 +127,7 @@ h1 { animation: aparecer 1s ease-in 1;
     transform: translateY(-1px);
 }
 
-/* input creates */
+input creates
 
 .centralize {
     display: flex;
@@ -177,14 +177,14 @@ transform: scale(0.8) translateY(-30px);
 background: #2c2c2c;
 }
 div.inputBlock input:focus{
-color: #8a1d8a;
+color: #cca0cc;
 border-color: #000;
 }
 div.inputBlock input:focus + span.placeholder {
-color: #8a1d8a;
+color: #cca0cc;
 }
 
-/* Types buttons */
+Types buttons
 
 .container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -259,4 +259,4 @@ ul.ksCboxtags li input[type="checkbox"] {
 ul.ksCboxtags li input[type="checkbox"] {
     position: absolute;
     opacity: 0;
-}
+} */
