@@ -1,4 +1,3 @@
-
 const { User, Clothes } = require("../../db");
 
 const getWishlistProducts = async (id) => {
@@ -7,7 +6,7 @@ const getWishlistProducts = async (id) => {
       where: { id: id },
       include: {
         model: Clothes,
-      }
+      },
     });
 
     return wishlist;

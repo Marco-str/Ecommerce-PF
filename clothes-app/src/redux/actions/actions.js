@@ -17,15 +17,44 @@ export const SIGN_UP_FAILURE = "SIGN_UP_FAILURE";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
+export const ADD_CART = "ADD_CART";
+export const DELETE_CART = "DELETE_CART";
+export const DELETE_PRODUCT_SUCCESS = "DELETE_PRODUCT_SUCCESS";
+export const DELETE_PRODUCT_FAILURE = "DELETE_PRODUCT_FAILURE";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const GET_USER_ALL = "GET_USER_ALL";
+export const DELETE_USER_SUCCESS = "DELETE_USER_SUCCESS";
+export const DELETE_USER_FAILURE = "DELETE_USER_FAILURE";
+export const ID_USER = "ID_USER";
+export const CONSULTA_SI_INICIO = "CONSULTA_SI_INICIO";
+export const ACTIVE = "ACTIVE";
+export const LOGIN_WITH_GOOGLE = "LOGIN_WITH_GOOGLE";
+export const GOOGLE = "GOOGLE";
+export const ADD_FAVORITE = "ADD_FAVORITE";
+export const DELETE_FAVORITE = "DELETE_FAVORITE";
+export const GET_FAVORITE = "GET_FAVORITE";
+export const GET_CART = "GET_CART";
+export const UPDATE_CART = "UPDATE_CART";
+export const SET_FAVORITES = "SET_FAVORITES";
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
+export const GET_ORDER_BY_ID = "GET_ORDER_BY_ID";
+export const CREATE_ORDER = "CREATE_ORDER";
+export const DELETE_ORDER = "DELETE_ORDER";
+export const getUser = (userId) => {
+  return async (dispatch) => {
+    try {
+      const user = await axios.get(`/users/${userId}`);
+      dispatch({ type: GET_USER, payload: user.data });
+    } catch (error) { }
+  };
+};
 
 export const getAllProducts = () => {
   return async (dispatch) => {
     try {
       const products = await axios.get("/products");
       dispatch({ type: GET_ALL_PRODUCTS, payload: products.data });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { }
   };
 };
 
@@ -34,9 +63,7 @@ export const getAllProductByName = (name) => {
     try {
       const products = await axios.get(`/products?name=${name}`);
       dispatch({ type: GET_BY_NAME, payload: products.data });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { }
   };
 };
 
@@ -45,11 +72,39 @@ export const getCategories = () => {
     try {
       const response = await axios.get(`/types`);
       dispatch({ type: GET_CATEGORIES, payload: response.data });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { }
   };
 };
+
+/* Add favorite */
+export const addFavorite = (character) => {
+  return {
+    type: ADD_FAVORITE,
+    payload: character,
+  };
+};
+
+export const deleteFavorite = (productId) => {
+  return {
+    type: DELETE_FAVORITE,
+    payload: productId,
+  };
+};
+
+export const getFavorites = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await axios.get(`/whishListProduct/${id}`);
+      return dispatch({
+        type: GET_FAVORITE,
+        payload: res.data.Clothes,
+      })
+    } catch (error) {
+
+    }
+  }
+}
+/* ------------------ */
 
 export const orderByName = (payload) => {
   return {
@@ -63,9 +118,7 @@ export const getDetail = (id) => {
     try {
       const response = await axios.get(`/products/${id}`);
       dispatch({ type: GET_DETAIL, payload: response.data });
-    } catch (error) {
-      console.log("Product not found");
-    }
+    } catch (error) { }
   };
 };
 
@@ -77,9 +130,15 @@ export const filterByCategory = (category) => {
 };
 
 export function filterByPrice(priceRange) {
-  console.log(priceRange, "priceRange aaa");
   return {
     type: FILTER_BY_PRICE,
+    payload: priceRange,
+  };
+}
+
+export function orderByPrice(priceRange) {
+  return {
+    type: ORDER_BY_PRICE,
     payload: priceRange,
   };
 }
@@ -91,26 +150,15 @@ export const filterByColor = (color) => {
   };
 };
 
-export function orderByPrice(priceRange) {
-  return {
-    type: ORDER_BY_PRICE,
-    payload: priceRange,
-  };
-}
-
-export const resetFilters = () => {
-  return {
-    type: RESET_FILTERS,
-  };
-};
+export const resetFilters = () => ({
+  type: RESET_FILTERS,
+});
 
 export const createPost = (newprod) => {
   return async (dispatch) => {
     try {
       // const response = await axios.post(`/product`, newprod);
-      console.log("Product created by Redux");
     } catch (error) {
-      console.log(error.message);
       alert("This process is under development...");
     }
   };
@@ -120,24 +168,30 @@ export const createUser = (user) => {
   return async (dispatch) => {
     try {
       // const response = await axios.post(`/user`, user);
-      console.log("User created by Redux");
+
       dispatch({ type: SIGN_UP_SUCCESS, payload: user });
     } catch (error) {
-      console.log(error.message);
       alert("This process is under development...");
       dispatch({ type: SIGN_UP_FAILURE, payload: error.message });
     }
   };
 };
 
-export const getUserByEmail = (email) => {
+export const getUserAll = () => {
   return async (dispatch) => {
     try {
-      const user = await axios.get(`/user?email=${email}`);
-      dispatch({ type: GET_USER, payload: user.data });
+      const user = await axios.get(`/users`);
+      dispatch({ type: GET_USER_ALL, payload: user.data });
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const getUserById = (id) => {
+  return async (dispatch) => {
+    const user = await axios.get(`/users/${id}`);
+    dispatch({ type: GET_USER_BY_ID, payload: user.data });
   };
 };
 
@@ -153,18 +207,20 @@ export const setPage = () => {
   };
 };
 
+export const idUser = (id) => {
+  return {
+    type: ID_USER,
+    payload: id,
+  };
+};
+
 export const signUpUser = (userData) => {
   return async (dispatch) => {
     try {
       const response = await axios.post("/signup", userData);
       const { token } = response.data;
-
-      // Puedes almacenar el token en el local storage o en un estado global según tu necesidad
-      // Ejemplo: localStorage.setItem("token", token);
-
       dispatch({ type: SIGN_UP_SUCCESS, payload: token });
     } catch (error) {
-      console.log(error.response.data);
       dispatch({ type: SIGN_UP_FAILURE, payload: error.response.data.msg });
     }
   };
@@ -175,14 +231,112 @@ export const login = (email, password) => {
     try {
       const response = await axios.post("/login", { email, password });
       const { token } = response.data;
-
-      // Puedes almacenar el token en el local storage o en un estado global según tu necesidad
-      // Ejemplo: localStorage.setItem("token", token);
-
       dispatch({ type: LOGIN_SUCCESS, payload: token });
     } catch (error) {
-      console.log(error.response.data);
       dispatch({ type: LOGIN_FAILURE, payload: error.response.data.msg });
+    }
+  };
+};
+
+export const addCart = (producto) => {
+  //  localStorage.setItem("carritoLS", JSON.stringify(producto));
+  // console.log(`producto: ${producto}`);
+  return {
+    type: ADD_CART,
+    payload: producto,
+  };
+};
+
+export const deleteCart = (array) => {
+  localStorage.setItem("carritoLS", JSON.stringify(array));
+  return {
+    type: DELETE_CART,
+    payload: array,
+  };
+};
+
+export const updatedCart = (array) => {
+  localStorage.setItem("carritoLS", JSON.stringify(array));
+  return {
+    type: UPDATE_CART,
+    payload: array,
+  };
+};
+
+export const getCart = () => {
+  const producto = JSON.parse(localStorage.getItem("carritoLS"));
+  return {
+    type: GET_CART,
+    payload: producto,
+  };
+};
+
+export const deleteProduct = (id) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`/products/${id}`);
+      dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: id });
+    } catch (error) {
+      dispatch({ type: DELETE_PRODUCT_FAILURE, payload: error.message });
+    }
+  };
+};
+
+export const consultaSiIniciado = (e) => {
+  return {
+    type: CONSULTA_SI_INICIO,
+    payload: e,
+  };
+};
+
+export const deleteUser = (id) => {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`/users/${id}`);
+      dispatch({ type: DELETE_USER_SUCCESS, payload: id });
+    } catch (error) {
+      dispatch({ type: DELETE_USER_FAILURE, payload: error.message });
+    }
+  };
+};
+
+export const loginWithGoogle = (e) => {
+  return {
+    type: LOGIN_WITH_GOOGLE,
+    payload: e,
+  };
+};
+
+export const setFavorites = (favorites) => ({
+  type: SET_FAVORITES,
+  payload: favorites,
+});
+
+export const google = (e) => {
+  return {
+    type: GOOGLE,
+    payload: e,
+  };
+};
+
+export const getAllOrders = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("/orders");
+      dispatch({ type: GET_ALL_ORDERS, payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getOrderById = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`/orders/${id}`);
+      dispatch({ type: GET_ORDER_BY_ID, payload: response.data });
+    } catch (error) {
+      console.log(error);
     }
   };
 };

@@ -1,0 +1,257 @@
+.cart {
+  width: 100px;
+  height: 100px;
+  background-image: url("../../assets/cart.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.cartDescription {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+}
+
+.mainTitle {
+  font-size: 40px;
+  margin: 30px;
+}
+
+.linkButtonnn {
+  margin-left: 40px;
+  text-decoration: none;
+  font-size: 50px;
+}
+
+.pbutton {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.componentCart {
+  background-color: white;
+
+  height: 100%;
+}
+
+.componentCart2 {
+  min-height: 100vh;
+}
+
+.imgSuma {
+  width: 20px;
+  height: 20px;
+  background-color: none;
+}
+
+.crtPrdct {
+  background-color: rgba(167, 167, 167, 0.082);
+  width: 65vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.trash {
+  cursor: pointer;
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+
+.bttnAdd {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #000; /* Color del texto del botón */
+  opacity: 1; /* Opacidad del botón (0.0 - 1.0) */
+}
+
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #fcdaff, #ffffff);
+  color: #1c1c1c;
+  height: 80vh;
+}
+
+.productAmount {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(210, 210, 210, 0.287);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.productAmountValue {
+  align-items: center;
+  justify-content: center;
+}
+
+.h2_name {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.containerCart {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+.imgCarrito {
+  height: 80px;
+  width: 60px;
+  border-radius: 5px;
+  margin: 10px;
+  object-fit: cover;
+}
+
+.totalPay {
+  font-size: 20px;
+  width: 260px;
+}
+
+.containerTotalpays {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerPrice {
+  font-size: 17px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.165);
+}
+
+.carritoTotalPrecio {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 90vw;
+  border-radius: 15px;
+  margin: 10px auto;
+  bottom: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.141);
+  margin-top: 25px;
+  background-color: #edcbf59a;
+}
+
+.svgcarrito {
+  margin-left: 10px;
+}
+
+.button_confirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  width: 200px;
+  height: 50px;
+  font-size: 14px;
+  background-color: #ffffffe8;
+  color: black;
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.button_confirm:hover {
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.214);
+  color: black;
+  transform: translateY(-2px);
+}
+
+.button_confirm:active {
+  transform: translateY(-1px);
+}
+/*********************************************************************************/
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 50px;
+  font-size: 15px;
+  color: rgb(43, 43, 43);
+  background-color: #fefefe;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.303);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #fefefe;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.289);
+  color: rgb(43, 43, 43);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+.price_data {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+.cantidadProducto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  width: fit-content;
+  margin-left: -20px;
+}
+
+.containerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divA {
+  margin: 20px;
+  font-size: 16px;
+}
+
+.types {
+  text-decoration: none;
+  color: rgb(19, 19, 19);
+}
+
+.svgAddorLess {
+  margin: 20px;
+  background-color: rgba(210, 210, 210, 0.287);
+  border-radius: 4px;
+}

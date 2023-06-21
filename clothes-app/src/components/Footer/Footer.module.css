@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+/*:::::Pie de Pagina*/
+.piepagina{
+    width: 100%;
+    background-color: #0a141d;
+}
+.piepagina .grupo1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+}
+.piepagina .grupo1 .box .figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.piepagina .grupo1 .box .figure .img{
+    width: 250px;
+}
+.piepagina .grupo1 .box .h2{
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 20px;
+    
+}
+.piepagina .grupo1 .box .p{
+    color: #efefef;
+    margin-bottom: 10px;
+}
+
+.box{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.piepagina .grupo1 .redsocial .a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #0d2033;
+    text-align: center;
+    transition: all 300ms ease;
+}
+.piepagina .grupo1 .redsocial .a:hover{
+    color: aqua;
+}
+
+.piepagina .grupo2{
+    background-color: #353535;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+.piepagina .grupo2 .small{
+    font-size: 15px;
+}
+@media screen and (max-width:800px){
+    .piepagina .grupo1{
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap:30px;
+        padding: 35px 0px;
+    }
+}
+

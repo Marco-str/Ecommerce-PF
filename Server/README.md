@@ -90,6 +90,19 @@ El servidor cuenta con las siguientes rutas:
 
 <br />
 
+#### **📍 POST | /payment/create-order"**
+-  Esta ruta permite crear una orden para un usuario
+-  Por body debe recibir un objeto con 2 propiedades {products,userId}, donde products es un array de objetos con las keys {id:'id del producto',quantity:'cantidad de este producto;} y userId es el ID del usuario al que se le esta creando la orden.
+-  Como respuesta esta ruta proporcionara un objeto JSON {redirect:'link'}, donde el link, sera el link de mercadopago donde el cliente puede realizar el pago.
+
+</br> </br>
+
+<br />
+
+---
+
+<br />
+
 #### **📍 GET | /products/name?="..."**
 
 -  Esta ruta retorna un array de objetos con todos los productos que coincidan con el nombre recibido por query.

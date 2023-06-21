@@ -5,38 +5,113 @@
   flex-wrap: wrap;
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
-  height: 700px;
-  width: 460px;
+  width: 25%;
   margin: 10px;
   padding-bottom: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11);
 }
 
 .mainContainer:hover {
-  box-shadow: 0 16px 25px rgba(0, 0, 0, 0.348);
-  transition: 0.3s;
+  box-shadow: 0 16px 25px rgba(0, 0, 0, 0.123);
+  transition: 0.4s;
+  transform: scale(1.01);
 }
 
 .card {
-width: 80%;
-border-radius: 3%;
+  width: 75%;
+  border-radius: 3%;
+}
+
+.card2 {
+  width: 75%;
+  border-radius: 3%;
+  filter: brightness(40%);
 }
 
 .title {
   text-align: center;
+  font-size: 130%;
   height: 30px;
   color: #434343;
 }
 
 .price {
-
-  text-decoration: none; 
+  text-decoration: none;
   align-items: center;
   justify-content: center;
   font-size: 25px;
   color: #434343;
+  margin-top: 30px;
+  margin-bottom: -5px;
 }
 
-.link{
+.price2 {
+  z-index: 1;
+  display: flex;
+  position: absolute;
+  margin-top: 60%;
+  margin-left: 14%;
+  font-size: 40px;
+  width: 50%;
+  color: #dadada8d;
+}
+
+.link {
   text-decoration: none;
+  max-height: 700px;
+  max-width: 460px;
+}
+
+.edit {
+  width: 20px;
+  height: 20px;
+}
+
+.edit:hover {
+  box-shadow: 0 16px 25px rgba(0, 0, 0, 0.827);
+}
+
+.svg {
+  position: absolute;
+  width: 8%;
+  margin-left: 80%;
+  margin-top: 137%;
+}
+
+.svg:hover {
+  transition: 0.4s;
+  transform: scale(1.5);
+}
+
+.svg2 {
+  width: 30px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.svg2:hover {
+  transition: 0.4s;
+  transform: scale(1.5);
+}
+
+.svg3 {
+  width: 30px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.svg3:hover {
+  transition: 0.4s;
+  transform: scale(1.5);
+}
+
+
+.buttonFav{
+  background-color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+}
+
+.svgSinStock{
+  width: 200px;
 }

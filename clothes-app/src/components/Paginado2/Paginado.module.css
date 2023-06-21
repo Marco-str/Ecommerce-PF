@@ -1,0 +1,47 @@
+.container{
+  position: relative;
+}
+
+
+
+.previousPage {
+  width: 55px;
+  border-radius: 5px;
+  background-color: #b5b5b5;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.323);
+  position: absolute;
+  bottom: 400px;
+  left: 140px;
+}
+.previousPage:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.651);
+  transition: 0.2s;
+}
+.nextPage {
+  width: 55px;
+  border-radius: 5px;
+  background-color: #b5b5b5;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.323);
+  position: absolute;
+  left: 90%;
+  bottom: 400px;
+
+}
+
+.nextPage:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.651);
+  transition: 0.2s;
+}
+

@@ -14,7 +14,7 @@ server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
 server.use((req, res, next) => {
   //middleware para dejar pasar las solicitudes de cualquiera
-  res.header("Access-Control-Allow-Origin", `*`);
+  res.header("Access-Control-Allow-Origin", "*");
 
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
@@ -24,7 +24,6 @@ server.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
-console.log("sali del ultimo middleware");
 
 server.use(routes); //por aqui pasan todas las endpoint
 

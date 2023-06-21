@@ -16,7 +16,6 @@ module.exports = (sequelize) => {
       phone: {
         type: DataTypes.BIGINT,
 
-        allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
@@ -30,6 +29,15 @@ module.exports = (sequelize) => {
       admin: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+      },
+      profileImage: {
+        type: DataTypes.STRING,
+        defaultValue:
+          "https://res.cloudinary.com/finalproject123/image/upload/v1686766053/1366_2000_qzgoym.jpg",
+      },
+      active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
       },
     },
     {

@@ -1,49 +1,213 @@
 .container {
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-  }
-  
-  .title {
-    color: #cca0cc;
-    text-align: center;
-  }
-  
-  .label {
-    color: #cca0cc;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .input {
-    background-color: #4e4c4c;
-    color: #24211d;
-    border: 0.01rem solid #adadad;
-    border-radius: 1rem;
-    font-weight: 500;
-    width: 250px;
-    padding: 15px;
-    margin-bottom: 10px;
-  }
-  
-  .error {
-    color: #cca0cc;
-    margin-top: 5px;
-  }
-  
-  .button {
-    background-color: #1d1f24;
-    color: #cca0cc;
-    border-radius: 45px;
-    border: none;
-    padding: 1.3em 3em;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    margin-top: 10px;
-  }
+  background-size: cover;
+  background-position: center;
+  width: 100vh;
+  height: 100vh;
+}
+
+.title {
+  color: rgba(41, 41, 41, 0.844);
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 5%;
+}
+
+.label {
+  color: rgba(41, 41, 41, 0.844);
+  display: block;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.inputBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.inputBlock input {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #020101;
+  width: 400px;
+  height: 20px;
+  padding: 15px 15px;
+  border-radius: 1rem;
+  border: 0.01rem solid #c0c0c0;
+  outline: none;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.inputBlock span.placeholder {
+  position: absolute;
+  margin: 8px 0;
+  padding: 0 9px;
+  color: #b4b2b2;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 17px;
+  transition: all 0.2s;
+  transform-origin: 0% 0%;
+  pointer-events: none;
+}
+
+.inputBlock input:valid + span.placeholder,
+.inputBlock input:focus + span.placeholder {
+  transform: scale(0.8) translateY(-30px);
+  background: #2c2c2c;
+}
+
+.inputBlock input:focus + span.placeholder {
+  color: #c8c8c8;
+  border-radius: 2px;
+}
+
+.error {
+  color: rgba(41, 41, 41, 0.844);
+  margin-top: 5px;
+}
+
+.block_containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10%;
+}
+
+/* /******************************************************************* */
+.button {
+  width: 200px;
+  height: 50px;
+  font-size: 14px;
+  color: #ffffff;
+  background-color: #1d1f24;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-top: 20px;
+  margin: 10px;
+}
+
+.button:hover {
+  background-color: #434343;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.82);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+.back {
+  width: 100%;
+  height: 110vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(252, 218, 255, 1) 100%
+  );
+  color: #af1cc2;
+}
+
+.buttonHidden {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  margin-left: 360px;
+  margin-top: 9px;
+}
+
+.buttonHidden {
+  cursor: pointer;
+}
+
+.inputBlockPassword {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.inputBlockPassword input {
+  display: flex;
+  position: relative;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #020101;
+  width: 400px;
+  height: 20px;
+  padding: 15px 15px;
+  border-radius: 1rem;
+  border: 0.01rem solid #c0c0c0;
+  outline: none;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.error {
+  position: absolute;
+  margin-left: 75%;
+  margin-top: -7%;
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+
+.containerError {
+  position: relative;
+}
+
+.containerCheck {
+  position: relative;
+}
+
+.check {
+  width: 40px;
+  position: absolute;
+  margin-top: -7.5%;
+  margin-left: 25%;
+}
+
+.loginGoogle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 17px;
+}
+
+.googleSil {
+  display: flex;
+  align-items: center;
+  width: 426px;
+  height: 60px;
+  border-radius: 15px;
+  border: 1px solid rgb(209, 209, 209);
+  text-decoration: none;
+  color: #1d1f24;
+  background-color: rgba(159, 159, 159, 0.56);
+}
+
+.svgGoogle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+margin-left: 20px;
+  height: 50px;
+}
+
+.textGoogle{
+
+margin-left: 15%;
+}

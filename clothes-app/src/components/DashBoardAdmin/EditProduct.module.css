@@ -1,0 +1,80 @@
+.main_container {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 1px solid #000000;
+  }
+  /*****************************************************/
+  .info_container {
+    width: 50%;
+    display: block;
+    border-radius: 5px solid #000000;
+  }
+
+  .image{
+    width: 40%;
+    height: 40%;
+  }
+ /*******************************************************/ 
+  .form_container {
+    width: 50%;
+    border-radius: 1px solid #000000;
+  }
+  .form_container form {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .form_container h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .form_container label {
+    font-weight: bold;
+  }
+  
+  .form_container input,
+  .form_container select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* .form_container button[type="submit"] {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form_container button[type="submit"]:hover {
+    background-color: #0069d9;
+  } */
+  
+
+  /********************************************************************/
+
+  .button {
+    width: 150px;
+    height: 50px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #1d1f24;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #434343;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.82);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  
+  .button:active {
+    transform: translateY(-1px);
+  }

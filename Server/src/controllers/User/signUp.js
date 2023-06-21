@@ -2,6 +2,7 @@ const { User } = require("../../db.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { JWT_SIGN } = process.env;
+const { sendRegistrationEmail } = require("../../utils/email");
 
 const signUp = async (req, res) => {
   try {
@@ -34,6 +35,8 @@ const signUp = async (req, res) => {
       },
       `${JWT_SIGN}`
     );
+
+    sendRegistrationEmail(newUser.id);
 
     res.status(200).json({ token });
   } catch (error) {

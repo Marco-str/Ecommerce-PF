@@ -2,9 +2,12 @@
 
 .mainContainer {
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(252, 218, 255);
+  background-color: #fcdaff;
   padding: 60px 50px 40px 50px;
   max-height: 10px;
 }
@@ -14,6 +17,16 @@
   color: black;
   text-decoration: none;
   font-size: 10px;
+}
+
+.carrito{
+  width: 40px;
+  height: 40px;
+}
+
+.carrito1{
+  width: 40px;
+  height: 40px;
 }
 
 .link:hover {
@@ -28,16 +41,16 @@
   color: rgb(41, 41, 41);
 }
 
-.button {
-  padding: 8px 20px;
-  margin: 10px;
+
+
+.buttonLanding{
   font-size: 15px;
-  background-color: #8a1d8a;
+  background-color: #ffffff;
   color: #000000;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 8px;
+  margin-left: 60%;
 }
 
 .titleEspecial {
@@ -49,7 +62,6 @@
 
 .loginSing{
   display: flex;
-  margin-right: 30px;
 }
 
 .titleLogin{
@@ -83,16 +95,22 @@
   color: rgb(41, 41, 41);
 }
 
-.button {
-  padding: 8px 20px;
-  margin: 10px;
+.buttons {
+  height: 40px;
+  width: 110px;
   font-size: 15px;
-  background-color: #8a1d8a;
+  background-color: #ffffff;
   color: #000000;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 8px;
+}
+
+.buttonsContainer{
+  display: flex;
+  align-items: center;
+  margin-right: 10%;
+  margin-left: -4%;
 }
 
 .titleEspecial {
@@ -104,8 +122,8 @@
 
 .loginSing {
   display: flex;
-  margin-right: 30px;
-  align-items: center; /* Agregado para centrar verticalmente los elementos */
+  align-items: center; 
+
 }
 
 .titleLogin {
@@ -127,4 +145,133 @@
 .logoutButton:hover {
   text-decoration: underline;
   text-shadow: none;
+}
+
+.nav__img{
+  height: 15%;
+  width: 15%;
+}
+
+
+
+
+/***************** Ventana de dialogo ************************/
+
+
+.contenedor_imagen {
+  position: relative;
+  display: inline-block;
+  margin: 0px -18px 0px 0px;
+}
+
+
+
+
+.texto_imagen {
+  display: none;
+  position: absolute;
+
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5); 
+  color: #fff;
+  text-align: center;
+ 
+  font-size: 24px;
+  margin : 10px;
+  padding: 10px;
+  width: 300px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -150px;
+  border-radius: 10px;
+ 
+}
+.contenedor_imagen:hover .texto_imagen {
+  display: block;
+  transform: translateY(5px);
+  transition: all 1s ease-in-out;
+}
+
+
+.button {
+  width: 100%;
+  height: 50px;
+  font-size: 14px;
+  color: #383838;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #eeeeee;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.467);
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+.svg {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.svg2 {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.svg2:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: transform 0.2s;
+}
+
+
+.svg33 {
+  width: 50%;
+  margin-right: 20px;
+}
+
+
+
+.svg:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: transform 0.2s;
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.numberCarrito{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: rgb(0, 0, 0);
+  border-radius: 50%;
+  height: 25%;
+  width: 25%;
+  margin-top: 55%;
+  margin-left: 55%;
+  background-color: rgb(255, 252, 56);
+}
+
+.containerNumberSvg:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: transform 0.2s;
 }

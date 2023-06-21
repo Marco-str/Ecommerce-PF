@@ -1,83 +1,68 @@
-.divTextBtn {
+.divLP {
   display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  padding-left: 2px;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.titles{
+
+  margin-bottom: 5%;
+  margin-top: 13%;
+}
+
+.title{
+  color: rgba(31, 30, 30, 0.844);
+  font-size: 70px;
 }
 
 .text {
-  color: rgb(248, 248, 248);
-  font-family: 'myFont';
+  color: rgba(41, 41, 41, 0.844);
   font-size: 45px;
   margin: 0;
   padding-bottom: 70px;
-  text-shadow: 0 0 10px rgb(83, 0, 63), 0 0 42px #420234, 0 0 82px #520441;
 }
 
 .btn {
-  font-family: 'myFont2';
-  font-size: 30px;
-  color: rgb(240, 235, 245);
-  background-color: #31011d7c;
-  border-color: rgb(240, 235, 245);
-  border-radius: 10%;
+  text-decoration: none;
+  width: 200px;
+  height: 50px;
+  font-size: 14px;
+  color: #f2f2f2;
+  background-color: #1d1f24;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  padding: 6px;
-  margin-bottom: 10px;
+  margin: 10px;
 }
+
 
 .btn:hover {
-  font-size: 33px;
-  color: rgb(184, 26, 26);
-  background-color: #dedef5;
-  border-color: rgb(184, 26, 26);
+  background-color: #434343;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.82);
+  color: #fff;
+  transform: translateY(-2px);
 }
 
-@media screen and (max-width: 700px) {
-  .divLP {
-    width: 10%;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: space-around;
-  }
-  
-  .btn {
-    font-size: 22px;
-    padding: 6px;
-    margin-left: 0px;
-  }
-  
-  .btn:hover {
-    font-size: 25px;
-  }
-  
-  .img {
-    width: 100px;
-    height: 100px;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 18px;
-    padding-left: 0px;
-  }
+.btn:hover{
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.421);
+  transition: 0.2s;
 }
 
-.centeredTitle {
+
+.btnS{
+  text-decoration: none;
+  color: white;
+}
+
+.back{
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.centeredText {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.loginBtn {
-  margin-left: auto;
-  margin-right: 10px;
-}
-
-.signupBtn {
-  margin-left: auto;
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(252,218,255,1) 100%);
+  color: #af1cc2;
 }

@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import Filters from "../Filters/Filters";
 import style from "./ButonFilter.module.css";
-import arriba from "../../img/arriba.png";
-import abajo from "../../img/abajo.png";
 
 const Buttons = () => {
   const [showFilters, setShowFilters] = useState(false);
+  // eslint-disable-next-line
   const [price, setPrice] = useState("");
-
-
   const handleButtonClick = () => {
     setShowFilters(!showFilters);
   };
@@ -19,12 +16,24 @@ const Buttons = () => {
         {showFilters ? (
           <div>
             <p>Hide Filters</p>
-            <img className={style.flecha} src={arriba} alt="arriba" />
+            <img
+              className={style.flecha}
+              src={
+                "https://res.cloudinary.com/finalproject123/image/upload/v1686937933/arriba_nu4ccg.png"
+              }
+              alt="arriba"
+            />
           </div>
         ) : (
           <div>
             <p>Show Filters</p>
-            <img  className={style.flecha} src={abajo} alt="arriba"/>
+            <img
+              className={style.flecha}
+              src={
+                "https://res.cloudinary.com/finalproject123/image/upload/v1686937918/abajo_o2u4a8.png"
+              }
+              alt="arriba"
+            />
           </div>
         )}
       </button>
