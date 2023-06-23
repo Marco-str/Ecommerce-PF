@@ -1,40 +1,55 @@
 .main_container {
     display: flex;
-    justify-content: space-between;
-    border-radius: 1px solid #000000;
+    width: 100%;
+    height: 100vh;
+    /* border-radius: 1px solid #000000; */
+
   }
   /*****************************************************/
   .info_container {
-    width: 50%;
-    display: block;
-    border-radius: 5px solid #000000;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  .image{
-    width: 40%;
-    height: 40%;
+ .image_edit{ 
+    max-height: 350px;
+    max-width: 350px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    margin: 0 0 0 0;
+    border-radius: 5px;
   }
- /*******************************************************/ 
+  /*******************************************************/
   .form_container {
-    width: 50%;
-    border-radius: 1px solid #000000;
+    width: 100%;
+    justify-content: center;
+    display: flex;
   }
   .form_container form {
-    display: grid;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
   }
-  
+
   .form_container h1 {
+    font-size: 1.5rem;
     margin-bottom: 1rem;
   }
   
   .form_container label {
     font-weight: bold;
+    margin-bottom: 0.5rem;
+
   }
   
   .form_container input,
   .form_container select {
-    width: 100%;
+    width: 500px;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -56,25 +71,84 @@
 
   /********************************************************************/
 
-  .button {
+  .button_editprodutcs {
+    width: 150px;
+    height: 40px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #1d1f24;
+    border: none;
+    outline: none;  
+    margin : 0 0 0 0;
+    border-radius: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  } 
+ /*******************************************************/ 
+  /********************************************************************/
+
+  .button_editprodutcs {
     width: 150px;
     height: 50px;
     font-size: 14px;
     color: #ffffff;
     background-color: #1d1f24;
     border: none;
+    outline: none;
+    margin : 20px 0 0 0;
     border-radius: 20px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
   }
   
-  .button:hover {
+ .button_editprodutcs:hover {
     background-color: #434343;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.82);
     color: #fff;
     transform: translateY(-2px);
   }
   
-  .button:active {
+ .button_editprodutcs:active {
     transform: translateY(-1px);
+  }
+
+  /***************************************************************/
+
+  .title_edit{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000;
+    margin: 0 0 0 0;
+    
+  }
+
+  .input_edit{
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    outline: none;
+  }
+
+  .option_edit{
+    max-width: 500px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    outline: none;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .description_edit{
+    max-width: 500px;
+    max-height: 300px;
+    padding: 0.5rem;
+    color : #000000;
+    border-radius: 5px;
+    border: 1px solid #000000;
+  }
+
+  .color_product{
+    margin: 10px;
   }

@@ -6,7 +6,8 @@
   justify-content: center;
   align-items: center;
   margin-top: 15px;
-  border-radius: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.214);
 }
 
 .filter-section {
@@ -29,18 +30,29 @@
   
 }
 
+.containerLowerHiger{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .select2 {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   font-size: 18px;
   background: #fff;
-  height: 40px;
-  width: 80px;
+  height: 60px;
+  width: 100px;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   transition: 0.2s ease all;;
   border: 2px solid transparent;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.096);
-  
+  margin-top: 70px;
+  margin-left: 40px;
 }
 
 .select2.active,

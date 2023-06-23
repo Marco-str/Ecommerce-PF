@@ -22,10 +22,15 @@
   border-radius: 3%;
 }
 
-.card2 {
+.imgContainer{
   width: 75%;
   border-radius: 3%;
-  filter: brightness(40%);
+}
+
+.card2{
+  width: 75%;
+  border-radius: 3%;
+filter: blur(3.5px);
 }
 
 .title {
@@ -53,7 +58,8 @@
   margin-left: 14%;
   font-size: 40px;
   width: 50%;
-  color: #dadada8d;
+  color: #ffffffed;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.402);
 }
 
 .link {
@@ -110,6 +116,13 @@
   background-color: rgb(255, 255, 255);
   border: none;
   cursor: pointer;
+}
+
+.buttonFav2{
+  background-color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+ margin: 50px;
 }
 
 .svgSinStock{

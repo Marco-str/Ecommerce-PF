@@ -7,16 +7,20 @@
     width: 100%;
     height: 100vh;
     text-align: center;
-    background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
 
 }
 
+.mainContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .body_container {
-  padding: 20px;
-  margin: auto;
-  width: 800px;
- 
- 
+  margin: 2%;
+  width: 50%;
+  background-color: #4f4f4f32;
+  border-radius: 20px;
 }
 
 .title_h1 {
@@ -50,22 +54,21 @@
 }
 
 .li_elements {
-  border: 1px solid black;
   padding: 10px;
-  margin: 10px;
+  margin: 10%;
   border-radius: 15px;
   box-shadow: 10px 10px 5px grey;
   text-align: center;
-  background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+  background-color: rgb(255, 251, 243);
 }
 
 .li_elements_inside {
-  margin-bottom: 10px;
-  border: 1px solid black;
+  margin: 10%;
   padding: 10px;
   border-radius: 15px;
   box-shadow: 10px 10px 5px grey;
-  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
+  background-color: #43434323;
+  
 }
 
 .button_back {

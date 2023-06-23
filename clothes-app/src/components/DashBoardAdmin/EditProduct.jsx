@@ -114,15 +114,15 @@ const EditProduct = () => {
 
       <div className={styles.main_container}>
         <div className={styles.info_container}>
-          <h1>PRODUCT DATA</h1>
+          <h1 className={styles.title_edit}>PRODUCT DATA</h1>
           <h3>{state?.name}</h3>
-          <img src={url} alt={state?.name} className={styles.image} />
+          <img src={url} alt={state?.name} className={styles.image_edit} />
 
           <h3>${state?.price}</h3>
-
+        <div  className={styles.color_product}>
           <label htmlFor="color">Color:</label>
-          <select type="select" name="color">
-            <option>None</option>
+          <select type="select" name="color" className={styles.option_edit}>
+            <option> None</option>
             {state?.color &&
               state.color.map((e) => (
                 <option name={e.ColorName} key={e.ColorName}>
@@ -130,13 +130,14 @@ const EditProduct = () => {
                 </option>
               ))}
           </select>
+              </div>
 
-          <label htmlFor="">Descrition:</label>
+          <label htmlFor="">Description:</label>
           {/* <p>{state?.description}</p> */}
-          <div dangerouslySetInnerHTML={{ __html: state?.description }}></div>
+          <div dangerouslySetInnerHTML={{ __html: state?.description }} className={styles.description_edit}></div>
 
           <Link to="/home">
-            <button className={styles.button}>
+            <button className={styles.button_editprodutcs}>
               Back <FaArrowLeft className={styles.icon}></FaArrowLeft>
             </button>
           </Link>
@@ -146,10 +147,11 @@ const EditProduct = () => {
 
         <div className={styles.form_container}>
           <form action="" onSubmit={handleSubmit}>
-            <h1>EDIT PRODUCT</h1>
+            <h1 className={styles.title_edit}>EDIT PRODUCT</h1>
 
             <label htmlFor="name">Name</label>
             <input
+              className={styles.input_edit}
               type="text"
               name="name"
               id="name"
@@ -159,6 +161,7 @@ const EditProduct = () => {
 
             <label htmlFor="image">Image</label>
             <input
+              className={styles.input_edit}
               type="text"
               name="image"
               id="imagen"
@@ -169,7 +172,7 @@ const EditProduct = () => {
             <UploadFile handleUpload={handleUpload} folder={"product"} />
 
             <label htmlFor="price">Price</label>
-            <input
+            <input className={styles.input_edit}
               type="number"
               name="price"
               id="price"
@@ -186,7 +189,7 @@ const EditProduct = () => {
               value={form.color} /> */}
 
             <label htmlFor="category">Category</label>
-            <input
+            <input className={styles.input_edit}
               type="text"
               name="category"
               id="category"
@@ -195,7 +198,7 @@ const EditProduct = () => {
             />
 
             <label htmlFor="parentCategory">parentCategory</label>
-            <input
+            <input className={styles.input_edit}
               type="text"
               name="parentCategory"
               id="description"
@@ -204,7 +207,7 @@ const EditProduct = () => {
             />
 
             <label htmlFor="description">Description</label>
-            <input
+            <input className={styles.input_edit}
               type="textarea"
               name="description"
               id="description"
@@ -213,7 +216,7 @@ const EditProduct = () => {
             />
 
             <label htmlFor="stock">Stock</label>
-            <input
+            <input className={styles.input_edit}
               type="number"
               name="stock"
               id="stock"
@@ -221,7 +224,7 @@ const EditProduct = () => {
               value={form.stock}
             />
 
-            <button type="submit" className={styles.button}>
+            <button type="submit" className={styles.button_editprodutcs}>
               Save Changes
             </button>
           </form>

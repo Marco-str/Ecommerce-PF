@@ -1,17 +1,17 @@
-
-.main_container{
+.main_container {
   height: 100vh;
-
-  background-image: linear-gradient(to top, #e28f92 0%, #ffaae4 99%, #fecfef 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
 }
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
- 
-  
 }
-.card_body{
+
+.card_body {
   color: #181717;
   /* background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); */
 }
@@ -24,13 +24,18 @@
 }
 
 .select_se {
+  border: none;
+  text-align: center;
   width: 300px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 10px;
-  background-image: linear-gradient(to right, #f6685e 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+}
+
+.select_se:hover{
+  cursor: pointer;
 }
 
 .imgen {
@@ -39,7 +44,6 @@
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
- 
 }
 
 .p_text {
@@ -61,28 +65,86 @@
 }
 
 .button_pause2 {
-  background-color: #192ff2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  height: 50px;
+  background-color: #94ff6981;
   color: white;
   border: none;
-  padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
+
+.button_pause2delete{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  height: 50px;
+  background-color: #ff2c2c87;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.button_pause2pause{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  height: 50px;
+  background-color: #fff82c87;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+
+.containerTitleandSvg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.centerButtonsCotnainer{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.textButtons{
+  color: black;
+}
+
+
 
 .button_despause {
   background-color: #ffc107;
 }
 
-
-.button_delete:hover{
+.button_delete:hover {
   background-color: #7b0301;
   scale: 1.1;
 }
-.button_pause2:hover{
-  background-color: #0e1a9b;
-  scale: 1.1;
+.button_pause2:hover {
+  color: white;
+  scale: 1.05;
+  transition: 0.3s;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.34);
 }
 .button_despause:hover {
   background-color: #7c5d02;
@@ -94,26 +156,23 @@
 }
 
 
-
-@media screen and (min-width: 768px) {
   .container {
     flex-direction: row;
     justify-content: space-around;
   }
 
-  .containerPause,
-  .containerDespause {
-    margin-top: 20px;
-  }
-}
-
-
-
 /**********************************************************************/
 
+.containerButtonBack{
+  position: relative;
+}
+
 .button {
+  position: absolute;
   width: 150px;
   height: 50px;
+  left: -555px;
+  top: 400px;
   font-size: 14px;
   color: #ffffff;
   background-color: #1d1f24;
@@ -137,12 +196,10 @@
 /**********************************************************************/
 .containerPause {
   margin: 10%;
-  border: 1px solid black;
-  background-image: linear-gradient(to top, #ffadb1 0%, #fecfef 99%, #fecfef 100%);
+  padding: 10px;
+  background-color: rgba(134, 134, 134, 0.08);
   border-radius: 15px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.245);
 }
 
-
 /**************************************************************************************/
-

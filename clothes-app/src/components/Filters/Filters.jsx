@@ -44,11 +44,10 @@ const Filters = ({ setprice }) => {
     setPriceRange([priceRange[0], maxPrice]);
   };
 
-const handleFilterByPrice = () => {
-  dispatch(filterByPrice(priceRange, orderBy));
-  dispatch(filterByCategory(selectedCategory));
-
-};
+  const handleFilterByPrice = () => {
+    dispatch(filterByPrice(priceRange, orderBy));
+    dispatch(filterByCategory(selectedCategory));
+  };
 
   const handleOrderByPrice = (event) => {
     const selectedOrder = event.target.value;
@@ -85,17 +84,19 @@ const handleFilterByPrice = () => {
         </select>
       </div>
 
-      <select
-        className={styles["select2"]}
-        value={orderBy}
-        onChange={handleOrderByPrice}
-        name="price"
-        id="price"
-      >
-        <option value="asc">Lower</option>
-        <option value="des">Higher</option>
-      </select>
-
+      <div className={styles["filter-section"]}>
+        <select
+          className={styles["select2"]}
+          value={orderBy}
+          onChange={handleOrderByPrice}
+          name="price"
+          id="price"
+        >
+          <option value="asc">Lower</option>
+          <option value="des">Higher</option>
+        </select>
+      </div>
+      
       <div className={styles["filter-section"]}>
         <div className={styles["price-input"]}>
           <h4 className={styles["priceRange"]}>Price Range</h4>

@@ -40,12 +40,14 @@ export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
 export const GET_ORDER_BY_ID = "GET_ORDER_BY_ID";
 export const CREATE_ORDER = "CREATE_ORDER";
 export const DELETE_ORDER = "DELETE_ORDER";
+export const RESET_FAVORITES = "RESET_FAVORITES";
+
 export const getUser = (userId) => {
   return async (dispatch) => {
     try {
       const user = await axios.get(`/users/${userId}`);
       dispatch({ type: GET_USER, payload: user.data });
-    } catch (error) { }
+    } catch (error) {}
   };
 };
 
@@ -54,7 +56,7 @@ export const getAllProducts = () => {
     try {
       const products = await axios.get("/products");
       dispatch({ type: GET_ALL_PRODUCTS, payload: products.data });
-    } catch (error) { }
+    } catch (error) {}
   };
 };
 
@@ -63,7 +65,7 @@ export const getAllProductByName = (name) => {
     try {
       const products = await axios.get(`/products?name=${name}`);
       dispatch({ type: GET_BY_NAME, payload: products.data });
-    } catch (error) { }
+    } catch (error) {}
   };
 };
 
@@ -72,7 +74,7 @@ export const getCategories = () => {
     try {
       const response = await axios.get(`/types`);
       dispatch({ type: GET_CATEGORIES, payload: response.data });
-    } catch (error) { }
+    } catch (error) {}
   };
 };
 
@@ -98,12 +100,10 @@ export const getFavorites = (id) => {
       return dispatch({
         type: GET_FAVORITE,
         payload: res.data.Clothes,
-      })
-    } catch (error) {
-
-    }
-  }
-}
+      });
+    } catch (error) {}
+  };
+};
 /* ------------------ */
 
 export const orderByName = (payload) => {
@@ -118,7 +118,7 @@ export const getDetail = (id) => {
     try {
       const response = await axios.get(`/products/${id}`);
       dispatch({ type: GET_DETAIL, payload: response.data });
-    } catch (error) { }
+    } catch (error) {}
   };
 };
 
@@ -316,6 +316,12 @@ export const google = (e) => {
   return {
     type: GOOGLE,
     payload: e,
+  };
+};
+
+export const resetFavorites = () => {
+  return {
+    type: RESET_FAVORITES,
   };
 };
 

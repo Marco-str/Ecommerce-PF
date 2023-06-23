@@ -28,9 +28,28 @@ export default function Detail() {
     };
   });
 
+  if (idUser.length !== 0) localStorage.setItem("idUser", idUser);
+
+  const idUsuarios = localStorage.getItem("idUser");
+
+  console.log(idUsuarios);
+
   const [card, setCard] = useState(false);
   const [card2, setCard2] = useState(false);
   const [comments, setComments] = useState([]);
+
+  const yaComento = comments?.some(
+    (item) => item.UserId === Number(idUsuarios)
+  );
+
+  const purchase = user.Orders;
+
+  console.log(comments);
+
+  const hasMatchingId = purchase?.some(
+    (item) =>
+      item.products?.some((item) => item.id === id) && item.status === "approved"
+  );
 
   useEffect(() => {
     setCard2(true);
@@ -67,12 +86,14 @@ export default function Detail() {
     ClotheId: id,
   });
 
-  const hanleChange = (event) => {
-    const { value, name } = event.target;
-    setForm({
-      ...form,
+  const handleChange2 = (event) => {
+    const value = event.target.value;
+    const name = event.target.name;
+
+    setForm((prevForm) => ({
+      ...prevForm,
       [name]: value,
-    });
+    }));
   };
 
   useEffect(() => {
@@ -142,6 +163,7 @@ export default function Detail() {
       }
 
       localStorage.setItem("carritoLS", JSON.stringify(updatedCart));
+      setCard2(true);
       Swal.fire({
         icon: "success",
         title: "¡Su producto se ha agregado al carrito!",
@@ -233,6 +255,7 @@ export default function Detail() {
   const arrayColor =
     state?.color &&
     state?.color.map((e) => (e.ColorName ? e.ColorName : e.name));
+
   return (
     <div>
       <div className={styles.back}>
@@ -342,82 +365,100 @@ export default function Detail() {
           </div>
         </div>
       </div>
+
       <div className={styles.back2}>
-        {comments.length === 0 ? (
-          <div className={styles.reviewss2}>
-            <h2 className={styles.sinPro}>
-              Todavía no hay comentarios sobre este producto.
-            </h2>
+        <div className={styles.back22}>
+          <div className={styles.h1Contane}>
+            <h1 className={styles.reviewsTitle}>Reviews</h1>
           </div>
-        ) : (
-          <div className={styles.reviewss}>
-            {comments.map((comment) => (
-              <div key={comment.id}>
-                <p className={styles.info}>Review: {comment.review}</p>
-                <p className={styles.info}>Rating:</p>
-                {Array.from({ length: comment.rating }).map((_, index) => (
-                  <svg
-                    className={styles.stars}
-                    key={index}
-                    width="0px"
-                    height="20px"
-                    viewBox="0 0 25 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M13 4L15.2747 9.8691L21.5595 10.2188L16.6806 14.1959L18.2901 20.2812L13 16.87L7.70993 20.2812L9.31941 14.1959L4.44049 10.2188L10.7253 9.8691L13 4Z"
-                      stroke="#121923"
-                      strokeWidth="1.2"
+          {comments.length === 0 ? (
+            <div className={styles.reviewss2}>
+              <h2 className={styles.sinPro}>
+                There are no comments about this product yet.
+              </h2>
+            </div>
+          ) : (
+            <div className={styles.reviewss}>
+              {comments.map((comment) => (
+                <div className={styles.comentariosContainer} key={comment.id}>
+                  <div className={styles.underLine}>
+                    <h2 className={styles.info}>Review</h2>
+                    <div className={styles.reviewdadsa}>
+                      <p>{comment.review}</p>
+                    </div>
+                    <h2 className={styles.info}>Rating:</h2>
+                    {Array.from({ length: comment.rating }).map((_, index) => (
+                      <svg
+                        className={styles.stars}
+                        key={index}
+                        width="0px"
+                        height="20px"
+                        viewBox="0 0 25 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M13 4L15.2747 9.8691L21.5595 10.2188L16.6806 14.1959L18.2901 20.2812L13 16.87L7.70993 20.2812L9.31941 14.1959L4.44049 10.2188L10.7253 9.8691L13 4Z"
+                          stroke="#121923"
+                          strokeWidth="1.2"
+                        />
+                      </svg>
+                    ))}
+                    <p className={styles.info}>Day:</p>
+                    <p className={styles.info}>
+                      {new Date(comment.date).toLocaleString([], {
+                        day: "numeric",
+                        month: "numeric",
+                        year: "numeric",
+                      })}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {hasMatchingId && !yaComento ? (
+            <div>
+              <div className={styles.containerReviews}>
+                <form className={styles.formContainer} onSubmit={submitHandler}>
+                  <div className={styles.enviarBut}>
+                    <p className={styles.textRating} htmlFor="review">
+                      Review
+                    </p>
+                    <input
+                      name="review"
+                      value={form.review}
+                      onChange={handleChange2}
+                      className={styles.inputC}
+                      type="text"
                     />
-                  </svg>
-                ))}
-                <p className={styles.info}>
-                  Day:
-                  <p className={styles.info}>
-                    {new Date(comment.date).toLocaleString([], {
-                      day: "numeric",
-                      month: "numeric",
-                      year: "numeric",
-                    })}
-                  </p>
-                </p>
+
+                    <label className={styles.textRating} htmlFor="rating">
+                      Rating
+                    </label>
+                    <input
+                      name="rating"
+                      value={form.rating}
+                      onChange={handleChange2}
+                      className={styles.inputC}
+                      type="range"
+                      min="1"
+                      max="5"
+                      step="1"
+                    />
+
+                    <span>{form.rating}</span>
+
+                    <button className={styles.buttonEnviar} type="submit">
+                      Enviar
+                    </button>
+                  </div>
+                </form>
               </div>
-            ))}
-          </div>
-        )}
-
-        <h1>Agregue su comentario</h1>
-        <form action="" onSubmit={submitHandler}>
-          <div className={styles.enviarBut}>
-            <label htmlFor="">Review</label>
-
-            <input
-              name="review"
-              value={form.review}
-              onChange={hanleChange}
-              className={styles.inputC}
-              type="text"
-            ></input>
-
-            <label htmlFor="">Rating</label>
-
-            <input
-              name="rating"
-              value={form.rating}
-              onChange={hanleChange}
-              className={styles.inputC}
-              type="range"
-              min="1"
-              max="5"
-              step="1"
-            />
-
-            <span>{form.rating}</span>
-
-            <button type="submit">Enviar</button>
-          </div>
-        </form>
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

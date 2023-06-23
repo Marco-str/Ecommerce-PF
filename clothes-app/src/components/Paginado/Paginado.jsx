@@ -4,25 +4,24 @@ import style from "./Paginado.module.css";
 export const Paginado = ({ pagina, setPagina, maximo }) => {
   const [input, setInput] = useState(pagina);
 
-  // useEffect(() => {
-  //   if (pagina < 1) {
-  //     setPagina(1);
-  //     setInput(1);
-  //   } else if (pagina > Math.ceil(maximo)) {
-  //     setPagina(Math.ceil(maximo));
-  //     setInput(Math.ceil(maximo));
-  //   }
-  // }, [maximo, pagina, setPagina]);
+  useEffect(() => {
+    if (pagina < 1) {
+      setPagina(1);
+      setInput(1);
+    } else if (pagina > Math.ceil(maximo)) {
+      setPagina(Math.ceil(maximo));
+      setInput(Math.ceil(maximo));
+    }
+  }, [maximo, pagina, setPagina]);
 
   const nextPage = () => {
     const nextPage = pagina + 1;
     if (nextPage <= Math.ceil(maximo)) {
       setPagina(nextPage);
       setInput(nextPage);
-      window.scrollTo({ top: 0, behavior: "smooth" });  // Desplazamiento al principio de la página
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Desplazamiento al principio de la página
     }
   };
-  
 
   const previousPage = () => {
     const previousPage = pagina - 1;

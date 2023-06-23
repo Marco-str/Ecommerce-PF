@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import s from "./LandingPage.module.css";
 import { useDispatch } from "react-redux";
-import { consultaSiIniciado } from "../../redux/actions/actions";
+import { consultaSiIniciado, resetFavorites } from "../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
@@ -11,6 +11,7 @@ export default function LandingPage() {
 
   const handleSinIniciar = () => {
     dispatch(consultaSiIniciado("no"));
+    dispatch(resetFavorites())
     navigate("/home");
   };
 

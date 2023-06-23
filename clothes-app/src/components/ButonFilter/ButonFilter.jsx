@@ -15,7 +15,9 @@ const Buttons = () => {
       <button className={style.button} onClick={handleButtonClick}>
         {showFilters ? (
           <div>
-            <p>Hide Filters</p>
+            <div className={style.containerAA}>
+              <h4 className={style.hidentext}>Hide Filters</h4>
+            </div>
             <img
               className={style.flecha}
               src={
@@ -26,7 +28,7 @@ const Buttons = () => {
           </div>
         ) : (
           <div>
-            <p>Show Filters</p>
+            <h4 className={style.hidentext}>Show Filters</h4>
             <img
               className={style.flecha}
               src={

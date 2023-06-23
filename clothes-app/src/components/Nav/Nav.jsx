@@ -4,20 +4,30 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart } from "../../redux/actions/actions";
+import { getCart, getFavorites } from "../../redux/actions/actions";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Nav = () => {
   const iniciado = useSelector((state) => state.iniciado);
   const userId = useSelector((state) => state.userId);
   const carritoState = useSelector((state) => state.cart);
+  const favorites = useSelector((state) => state.myFavorites);
+
   // console.log(userId.Clothes, "asdasd")
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getCart());
+    if (sesions === "si") {
+      dispatch(getCart(id));
+      dispatch(getFavorites(id));
+    }
+
     // dispatch(getUser(userId.id))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const id = userId.id;
@@ -30,11 +40,15 @@ const Nav = () => {
 
   const sesions = localStorage.getItem("sesions");
 
-  //const [isLoggedIn, setIsLoggedIn] = useState();
+  const alertLogin = () => {
+    Swal.fire("You need to log in or register.").then(() => {
+      navigate("/login");
+    });
+  };
 
   return (
     <div className={style.mainContainer}>
-      <Link className={style.link} to="/">
+      <Link className={style.link} to="/home">
         <h1 className={style.titleEspecial}>ClotheStore</h1>
       </Link>
 
@@ -133,11 +147,14 @@ const Nav = () => {
           <div className={style.contenedor_imagen}>
             <div className={style.svg22}>
               <div className={style.containerNumberSvg}>
-                {carritoState === null ? (
-                  <p className={style.numberCarrito}>0</p>
-                ) : (
-                  <p className={style.numberCarrito}>{carritoState.length}</p>
-                )}
+                {sesions === "si" ? (
+                  carritoState === null ? (
+                    <p className={style.numberCarrito}>0</p>
+                  ) : (
+                    <p className={style.numberCarrito}>{carritoState.length}</p>
+                  )
+                ) : null}
+
                 <Link to="/carrito">
                   <svg
                     className={style.svg33}
@@ -157,24 +174,55 @@ const Nav = () => {
               </div>
             </div>
           </div>
-          <NavLink to={`/favorites/${id}`}>
-            <div className={style.nav_fav}>
-              <svg
-                className={style.svg}
-                width="75px"
-                height="75px"
-                viewBox="0 0 25 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17 16C15.8 17.3235 12.5 20.5 12.5 20.5C12.5 20.5 9.2 17.3235 8 16C5.2 12.9118 4.5 11.7059 4.5 9.5C4.5 7.29412 6.1 5.5 8.5 5.5C10.5 5.5 11.7 6.82353 12.5 8.14706C13.3 6.82353 14.5 5.5 16.5 5.5C18.9 5.5 20.5 7.29412 20.5 9.5C20.5 11.7059 19.8 12.9118 17 16Z"
-                  stroke="#121923"
-                  strokeWidth="1.2"
-                />
-              </svg>
-            </div>
-          </NavLink>
+          <div className={style.containerFavoritesSvg}>
+            {sesions === "no" ? (
+              <button className={style.buttonAlert} onClick={alertLogin}>
+                <div className={style.nav_fav}>
+                  <div className={style.containerFavorites}>
+                    <p className={style.favorites}>{favorites.length}</p>
+                  </div>
+
+                  <svg
+                    className={style.svg}
+                    width="75px"
+                    height="75px"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17 16C15.8 17.3235 12.5 20.5 12.5 20.5C12.5 20.5 9.2 17.3235 8 16C5.2 12.9118 4.5 11.7059 4.5 9.5C4.5 7.29412 6.1 5.5 8.5 5.5C10.5 5.5 11.7 6.82353 12.5 8.14706C13.3 6.82353 14.5 5.5 16.5 5.5C18.9 5.5 20.5 7.29412 20.5 9.5C20.5 11.7059 19.8 12.9118 17 16Z"
+                      stroke="#121923"
+                      strokeWidth="1.2"
+                    />
+                  </svg>
+                </div>
+              </button>
+            ) : (
+              <NavLink to={`/favorites/${id}`}>
+                <div className={style.nav_fav}>
+                  <div className={style.containerFavorites}>
+                    <p className={style.favorites}>{favorites.length}</p>
+                  </div>
+
+                  <svg
+                    className={style.svg}
+                    width="75px"
+                    height="75px"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M17 16C15.8 17.3235 12.5 20.5 12.5 20.5C12.5 20.5 9.2 17.3235 8 16C5.2 12.9118 4.5 11.7059 4.5 9.5C4.5 7.29412 6.1 5.5 8.5 5.5C10.5 5.5 11.7 6.82353 12.5 8.14706C13.3 6.82353 14.5 5.5 16.5 5.5C18.9 5.5 20.5 7.29412 20.5 9.5C20.5 11.7059 19.8 12.9118 17 16Z"
+                      stroke="#121923"
+                      strokeWidth="1.2"
+                    />
+                  </svg>
+                </div>
+              </NavLink>
+            )}
+          </div>
         </React.Fragment>
       </div>
     </div>

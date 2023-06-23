@@ -5,8 +5,8 @@
 
 .wppContainer {
   position: fixed;
-  bottom: 17%;
-  left: 93.2% ;
+  bottom: 130px;
+  right: 10px;
   z-index: 9999;
 }
 

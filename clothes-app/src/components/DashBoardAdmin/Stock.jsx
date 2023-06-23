@@ -67,62 +67,63 @@ export default function Stock() {
 
   return (
     <>
-    <div className={styles.all_container}>
+      <div className={styles.all_container}>
+        <div className={styles.main_container}>
+          <h1>STOCK CONTROLLER</h1>
 
-    <div className={styles.main_container}>
-
-      <h1>STOCK CONTROLLER</h1>
-
-      {updatedProducts.length > 0 && (
-        <button onClick={handleSaveStock} className={styles.button_save}>Save Stock</button>
-        )}
-
-      {products.map((product) => (
-        <div className={styles.container} key={product.id}>
-    
-
-          <ul className={styles.ul}>  
-            <span className={styles.span}>{product.name}</span>
-          </ul>
-            <img className={styles.img} src={product.image} alt={product.name} /> 
-            <span className={styles.span}>  ${product.price}</span>
-            <span>Stock disponible</span>
-            <span className={styles.span}>  {product.stock}</span>
-          
-          
-          <div className={styles.buttonContainer}>
-            <button
-              value={product.id}
-              onClick={handlerButtonMore}
-              className={styles.button}
-            >
-              +
+          {updatedProducts.length > 0 && (
+            <button onClick={handleSaveStock} className={styles.button_save}>
+              Save Stock
             </button>
-            <button
-              value={product.id}
-              onClick={handlerButtonLess}
-              className={styles.button}
-              >
-              -
+          )}
+
+          {products.map((product) => (
+            <div className={styles.container} key={product.id}>
+              <ul className={styles.ul}>
+                <span className={styles.span}>{product.name}</span>
+              </ul>
+              <img
+                className={styles.img}
+                src={product.image}
+                alt={product.name}
+              />
+              <span className={styles.span}> ${product.price}</span>
+              <span>Stock</span>
+              <span className={styles.span}> {product.stock}</span>
+
+              <div className={styles.buttonContainer}>
+                <button
+                  value={product.id}
+                  onClick={handlerButtonMore}
+                  className={styles.button}
+                >
+                  +
+                </button>
+                <button
+                  value={product.id}
+                  onClick={handlerButtonLess}
+                  className={styles.button}
+                >
+                  -
+                </button>
+              </div>
+            </div>
+          ))}
+
+          {updatedProducts.length > 0 && (
+            <button onClick={handleSaveStock} className={styles.button_save}>
+              Save Stock
             </button>
+          )}
+          <div>
+            <Link to="/DashBoardAdmin">
+              <button className={styles.button_back}>
+                Back <FaArrowLeft className={styles.icon_back}></FaArrowLeft>
+              </button>
+            </Link>
           </div>
         </div>
-      ))}
-
-      {updatedProducts.length > 0 && (
-        <button onClick={handleSaveStock} className={styles.button_save}>Save Stock</button>
-        )}
-<div>
-      <Link to="/DashBoardAdmin">
-        <button className={styles.button_back}>
-          Back <FaArrowLeft className={styles.icon_back}></FaArrowLeft>
-        </button>
-      </Link>
-</div>
-
-    </div>
-
-        </div>
+      </div>
     </>
   );
 }

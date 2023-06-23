@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { deleteCart, updatedCart } from "../../../redux/actions/actions.js";
 
 import styles from "../carrito.module.css";
-import Suma from "../../../assets/suma-signo-mas.png";
-import Resta from "../../../assets/menos (1).png";
 
 export default function CartProduct({ product, stock }) {
   const dispatch = useDispatch();
@@ -77,7 +74,7 @@ export default function CartProduct({ product, stock }) {
             <path
               d="M5 6.5H20M10 6.5V4.5C10 3.94772 10.4477 3.5 11 3.5H14C14.5523 3.5 15 3.94772 15 4.5V6.5M12.5 9V17M15.5 9L15 17M9.5 9L10 17M18.5 6.5L17.571 18.5767C17.5309 19.0977 17.0965 19.5 16.574 19.5H8.42603C7.90349 19.5 7.46905 19.0977 7.42898 18.5767L6.5 6.5H18.5Z"
               stroke="#121923"
-              stroke-width="1.2"
+              strokeWidth="1.2"
             />
           </svg>
         </button>
@@ -92,7 +89,7 @@ export default function CartProduct({ product, stock }) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M5 12.5H20" stroke="#121923" stroke-width="1.2" />
+              <path d="M5 12.5H20" stroke="#121923" strokeWidth="1.2" />
             </svg>
           </button>
 
@@ -117,7 +114,7 @@ export default function CartProduct({ product, stock }) {
               <path
                 d="M12.5 5V20M5 12.5H20"
                 stroke="#121923"
-                stroke-width="1.2"
+                strokeWidth="1.2"
               />
             </svg>
           </button>

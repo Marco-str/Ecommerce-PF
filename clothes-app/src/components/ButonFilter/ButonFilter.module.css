@@ -1,25 +1,35 @@
-.container{
-    padding: 20px;
-    background-image: linear-gradient(to bottom, rgb(252, 218, 255), rgb(234, 234, 234));
+.container {
+  padding: 20px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(252, 218, 255),
+    rgb(234, 234, 234)
+  );
 }
 
-.button{
-    height: 50px;
-    width: 200px;
-    border-radius: 30px;
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: 0.2s;
-    background-color: #f1f1f1;
-    font-size: 15px;
+.button {
+  height: 50px;
+  width: 200px;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+  background-color: #f1f1f1;
+  font-size: 15px;
 }
 
-.button:hover{
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: 0.2s;
+.button:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-.flecha{
-    width: 15px;
-    margin: 10px;
+.flecha {
+  width: 15px;
+  margin: 10px;
+}
+
+.hidentext {
+color: rgb(50, 50, 50);
+  margin: 17px;
 }
